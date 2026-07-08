@@ -1,0 +1,10 @@
+*.bak
+*.cache
+*.log
+*.o
+*.status
+.deps/
+/Doxyfile
+Makefile
+doc/
+libtool

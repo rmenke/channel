@@ -1,0 +1,5 @@
+*.gcda
+*.gcno
+*.ppm
+*.test
+*.trs
