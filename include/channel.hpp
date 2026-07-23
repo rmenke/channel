@@ -4,11 +4,9 @@
 #include <cassert>
 #include <cmath>
 #include <functional>
-#include <initializer_list>
 #include <iterator>
 #include <ostream>
 #include <ranges>
-#include <stdexcept>
 #include <utility>
 #include <vector>
 
@@ -70,7 +68,7 @@ struct point {
     }
 
     /// @brief Calculate the square of the euclidean length.
-    constexpr int length_squared() const noexcept {
+    constexpr std::size_t length_squared() const noexcept {
         return x * x + y * y;
     }
 
