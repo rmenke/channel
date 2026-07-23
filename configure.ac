@@ -19,7 +19,7 @@ AX_CXX_COMPILE_STDCXX([23],[noext])
 
 AC_LANG([C++])
 
-AC_CHECK_HEADERS([mdspan concepts functional iterator ranges],[],[
+AC_CHECK_HEADERS([functional iterator ranges],[],[
     AC_MSG_ERROR([incomplete C++ standard library])
 ])
 

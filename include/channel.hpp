@@ -3,7 +3,6 @@
 
 #include <cassert>
 #include <cmath>
-#include <concepts>
 #include <functional>
 #include <initializer_list>
 #include <iterator>

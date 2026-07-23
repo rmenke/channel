@@ -7,10 +7,8 @@
 #include <filesystem>
 #include <fstream>
 #include <limits>
-#include <mdspan>
 #include <memory>
 #include <ostream>
-#include <utility>
 
 class raster {
   public:
@@ -29,39 +27,41 @@ class raster {
     static constexpr pixel YELLOW = {255, 255, 0};
 
   private:
-    using extent_t = std::dextents<std::size_t, 2>;
-
     std::unique_ptr<pixel[]> _data;
-    std::mdspan<pixel, extent_t, std::layout_left> _mdspan;
+    std::size_t _width, _height;
 
   public:
     raster(std::size_t width, std::size_t height)
         : _data(std::make_unique_for_overwrite<pixel[]>(width * height))
-        , _mdspan(_data.get(), width, height) {
+        , _width(width)
+        , _height(height) {
         auto begin = _data.get();
         auto end = _data.get() + width * height;
         std::ranges::uninitialized_fill(begin, end, WHITE);
     }
 
     template <typename... Args>
-    decltype(auto) operator[](Args &&...args) {
-        return _mdspan[std::forward<Args>(args)...];
+    decltype(auto) operator[](std::size_t x, std::size_t y) {
+        return _data[y * _width + x];
     }
 
     auto width() const {
-        return _mdspan.extent(0);
+        return _width;
     }
     auto height() const {
-        return _mdspan.extent(0);
+        return _height;
     }
     auto size() const {
-        return _mdspan.size();
+        return _width * _height;
     }
 
     friend std::ostream &operator<<(std::ostream &os, const raster &r) {
         os << "P3\n";
         os << r.width() << ' ' << r.height() << '\n';
-        os << static_cast<int>(std::numeric_limits<pixel::value_type>::max()) << '\n';
+        os << static_cast<int>(
+                  std::numeric_limits<pixel::value_type>::max()
+              )
+           << '\n';
 
         auto b = r._data.get();
         auto e = b + r.size();
