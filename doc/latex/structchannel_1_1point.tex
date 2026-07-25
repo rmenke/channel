@@ -1,0 +1,69 @@
+\doxysection{channel::\+point Struct Reference}
+\hypertarget{structchannel_1_1point}{}\label{structchannel_1_1point}\index{channel::point@{channel::point}}
+
+
+A 2-\/D coordinate pair.  
+
+
+
+
+{\ttfamily \+\#include $<$channel.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structchannel_1_1point_abea99113389b678f8628e24c27abdec7}\label{structchannel_1_1point_abea99113389b678f8628e24c27abdec7} 
+constexpr {\bfseries point} () noexcept
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\Hypertarget{structchannel_1_1point_aa3463f88648a880f4f8f698f1a7d5b25}\label{structchannel_1_1point_aa3463f88648a880f4f8f698f1a7d5b25} 
+constexpr {\bfseries point} (int x, int y) noexcept
+\begin{DoxyCompactList}\small\item\em Construct a point from two coordinates. \end{DoxyCompactList}\item 
+\Hypertarget{structchannel_1_1point_a639cb643df13fa42d2e3d101b08f6f33}\label{structchannel_1_1point_a639cb643df13fa42d2e3d101b08f6f33} 
+constexpr {\bfseries point} (auto \&\&pt)
+\begin{DoxyCompactList}\small\item\em Construct a point from any type that is bindable. \end{DoxyCompactList}\item 
+\Hypertarget{structchannel_1_1point_a7ab91bfb7a0366d8133e9514b8789b16}\label{structchannel_1_1point_a7ab91bfb7a0366d8133e9514b8789b16} 
+constexpr {\bfseries operator std::\+pair$<$ int, int $>$} () const noexcept
+\begin{DoxyCompactList}\small\item\em Convert a {\ttfamily point} object into a {\ttfamily std::\+pair} object. \end{DoxyCompactList}\item 
+\Hypertarget{structchannel_1_1point_a28a41ada2e8b2c4741e898c3063b312e}\label{structchannel_1_1point_a28a41ada2e8b2c4741e898c3063b312e} 
+constexpr bool {\bfseries operator==} (\doxymbox{\hyperlink{structchannel_1_1point_abea99113389b678f8628e24c27abdec7}{point}} const \&) const noexcept=default
+\begin{DoxyCompactList}\small\item\em Equality operator. \end{DoxyCompactList}\item 
+\Hypertarget{structchannel_1_1point_ac8c54afe73b4dc35b91320ca2da4ae06}\label{structchannel_1_1point_ac8c54afe73b4dc35b91320ca2da4ae06} 
+constexpr \doxymbox{\hyperlink{structchannel_1_1point_abea99113389b678f8628e24c27abdec7}{point}} {\bfseries operator+} (\doxymbox{\hyperlink{structchannel_1_1point_abea99113389b678f8628e24c27abdec7}{point}} const \&rhs) const noexcept
+\begin{DoxyCompactList}\small\item\em Vector addition. \end{DoxyCompactList}\item 
+\Hypertarget{structchannel_1_1point_a6ef9ff8e96d14c058321798bcca96438}\label{structchannel_1_1point_a6ef9ff8e96d14c058321798bcca96438} 
+constexpr \doxymbox{\hyperlink{structchannel_1_1point_abea99113389b678f8628e24c27abdec7}{point}} {\bfseries operator-\/} (\doxymbox{\hyperlink{structchannel_1_1point_abea99113389b678f8628e24c27abdec7}{point}} const \&rhs) const noexcept
+\begin{DoxyCompactList}\small\item\em Vector subtraction. \end{DoxyCompactList}\item 
+\Hypertarget{structchannel_1_1point_a373c29520146615c9e409deb2bd5fe52}\label{structchannel_1_1point_a373c29520146615c9e409deb2bd5fe52} 
+constexpr \doxymbox{\hyperlink{structchannel_1_1point_abea99113389b678f8628e24c27abdec7}{point}} {\bfseries operator-\/} () const noexcept
+\begin{DoxyCompactList}\small\item\em Vector negation. \end{DoxyCompactList}\item 
+\Hypertarget{structchannel_1_1point_afa1d7da285d875374fafe14c76b184d2}\label{structchannel_1_1point_afa1d7da285d875374fafe14c76b184d2} 
+constexpr \doxymbox{\hyperlink{structchannel_1_1point_abea99113389b678f8628e24c27abdec7}{point}} \& {\bfseries operator\texorpdfstring{$\ast$}{*}=} (std::\+integral auto \&\&t) noexcept
+\begin{DoxyCompactList}\small\item\em Multiply the vector by an integral value. \end{DoxyCompactList}\item 
+\Hypertarget{structchannel_1_1point_ac705636a79ab0f50a2a9278e46e3df66}\label{structchannel_1_1point_ac705636a79ab0f50a2a9278e46e3df66} 
+constexpr std::\+size\+\_\+t {\bfseries length\+\_\+squared} () const noexcept
+\begin{DoxyCompactList}\small\item\em Calculate the square of the euclidean length. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structchannel_1_1point_a182dcd660e2d2578353bd748acd050b4}\label{structchannel_1_1point_a182dcd660e2d2578353bd748acd050b4} 
+int {\bfseries x}
+\begin{DoxyCompactList}\small\item\em The x-\/coordinate. \end{DoxyCompactList}\item 
+\Hypertarget{structchannel_1_1point_a72d925e38a2eb2c4e720eb376b0e214f}\label{structchannel_1_1point_a72d925e38a2eb2c4e720eb376b0e214f} 
+int {\bfseries y}
+\begin{DoxyCompactList}\small\item\em The y-\/coordinate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structchannel_1_1point_a3ddf85b4cceed7dc3dc749123cc290c8}\label{structchannel_1_1point_a3ddf85b4cceed7dc3dc749123cc290c8} 
+std::\+ostream \& {\bfseries operator$<$$<$} (std::\+ostream \&os, \doxymbox{\hyperlink{structchannel_1_1point_abea99113389b678f8628e24c27abdec7}{point}} const \&pt)
+\begin{DoxyCompactList}\small\item\em Output the point as an ordered pair. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A 2-\/D coordinate pair. 
+
+While it would have been possible for point to be implemented as a {\ttfamily std::\+pair$<$int,int$>$} class, it made the introduction of operators working with the values difficult. 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+channel.\+hpp\end{DoxyCompactItemize}

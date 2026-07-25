@@ -1,0 +1,84 @@
+\doxysection{channel::\+ranges::\+thin\+\_\+line\+\_\+view Class Reference}
+\hypertarget{classchannel_1_1ranges_1_1thin__line__view}{}\label{classchannel_1_1ranges_1_1thin__line__view}\index{channel::ranges::thin\_line\_view@{channel::ranges::thin\_line\_view}}
+
+
+The classic Bresenham algorithm as a range factory.  
+
+
+
+
+{\ttfamily \+\#include $<$channel.\+hpp$>$}
+
+
+
+Collaboration diagram for channel::\+ranges::\+thin\+\_\+line\+\_\+view:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=189pt]{classchannel_1_1ranges_1_1thin__line__view__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{classchannel_1_1ranges_1_1thin__line__view_1_1iterator}{iterator}}
+\begin{DoxyCompactList}\small\item\em An iterator that generates the integral points nearest to the ideal ray. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \doxymbox{\hyperlink{classchannel_1_1ranges_1_1thin__line__view_a5438562d1206596906b2eb96e063793e}{thin\+\_\+line\+\_\+view}} (auto \&\&p0, auto \&\&p1)
+\begin{DoxyCompactList}\small\item\em Construct a thin line between two endpoints. \end{DoxyCompactList}\item 
+\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_a6fafca97b520e44656b0460578b7b152}\label{classchannel_1_1ranges_1_1thin__line__view_a6fafca97b520e44656b0460578b7b152} 
+constexpr \doxymbox{\hyperlink{classchannel_1_1ranges_1_1thin__line__view_1_1iterator}{iterator}} {\bfseries begin} () const
+\begin{DoxyCompactList}\small\item\em Create an iterator that is positioned at the starting coordinates. \end{DoxyCompactList}\item 
+\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_a1d481494ce206ae83c570d6de130a8a6}\label{classchannel_1_1ranges_1_1thin__line__view_a1d481494ce206ae83c570d6de130a8a6} 
+constexpr \doxymbox{\hyperlink{classchannel_1_1ranges_1_1thin__line__view_1_1iterator}{iterator}} {\bfseries end} () const
+\begin{DoxyCompactList}\small\item\em Create an iterator that is positioned one step past the ending coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_a4792f23c745fe0b567ff409a2ede3187}\label{classchannel_1_1ranges_1_1thin__line__view_a4792f23c745fe0b567ff409a2ede3187} 
+\doxymbox{\hyperlink{structchannel_1_1point}{point}} {\bfseries \+\_\+p0}
+\begin{DoxyCompactList}\small\item\em The starting point. \end{DoxyCompactList}\item 
+\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_a66a188381c4721ee903e7c8633bbeb93}\label{classchannel_1_1ranges_1_1thin__line__view_a66a188381c4721ee903e7c8633bbeb93} 
+\doxymbox{\hyperlink{structchannel_1_1point}{point}} {\bfseries \+\_\+p1}
+\begin{DoxyCompactList}\small\item\em The finishing point. \end{DoxyCompactList}\item 
+\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_ab08a47af877a4de9d5d4cff4c26d9d32}\label{classchannel_1_1ranges_1_1thin__line__view_ab08a47af877a4de9d5d4cff4c26d9d32} 
+\doxymbox{\hyperlink{structchannel_1_1point}{point}} {\bfseries \+\_\+delta}
+\begin{DoxyCompactList}\small\item\em The absolute difference between the endpoints. \end{DoxyCompactList}\item 
+\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_ae8ddf3215231c40ca7f397595a1f9d97}\label{classchannel_1_1ranges_1_1thin__line__view_ae8ddf3215231c40ca7f397595a1f9d97} 
+\doxymbox{\hyperlink{structchannel_1_1point}{point}} {\bfseries \+\_\+move}
+\begin{DoxyCompactList}\small\item\em The direction of movement along the axes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The classic Bresenham algorithm as a range factory. 
+
+Bresenham\textquotesingle{}s algorithm maintains an error term that indicates how far the nearest integral pixel is to the ideal line. 
+
+\label{classchannel_1_1ranges_1_1thin__line__view_doc-constructors}
+\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_a5438562d1206596906b2eb96e063793e}\index{channel::ranges::thin\_line\_view@{channel::ranges::thin\_line\_view}!thin\_line\_view@{thin\_line\_view}}
+\index{thin\_line\_view@{thin\_line\_view}!channel::ranges::thin\_line\_view@{channel::ranges::thin\_line\_view}}
+\doxysubsubsection{\texorpdfstring{thin\_line\_view()}{thin\_line\_view()}}
+{\footnotesize\ttfamily \label{classchannel_1_1ranges_1_1thin__line__view_a5438562d1206596906b2eb96e063793e} 
+channel::\+ranges::\+thin\+\_\+line\+\_\+view::\+thin\+\_\+line\+\_\+view (\begin{DoxyParamCaption}\item[{auto \&\&}]{p0}{, }\item[{auto \&\&}]{p1}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Construct a thin line between two endpoints. 
+
+The result will contain only the first endpoint. 
+\begin{DoxyParams}{Parameters}
+{\em p0} & the starting point  \\
+\hline
+{\em p1} & the ending point \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+channel.\+hpp\end{DoxyCompactItemize}

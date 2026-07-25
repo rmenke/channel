@@ -1,0 +1,37 @@
+\chapter{Channel }
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{Channel@{Channel}}
+\label{md__r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md0}%
+
+
+Implementation of the Bresenham-\/\+Murphy thick line drawing algorithm in C++20.
+
+This is a header-\/only library. The configuration script is used to set up the test harness and confirm that the necessary compiler features are available.
+
+There are likely more efficient implementations out there, but as the Murphy paper is frustratingly opaque, this implementation serves as a pedagogical example.\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{\texorpdfstring{Using the library}{Using the library}}\label{md__r_e_a_d_m_e_autotoc_md1}
+\begin{DoxyVerb}#include "channel.hpp"
+
+std::pair p0{123,45};
+std::pair p1{-67,89};
+
+// Thin line example
+for (auto &&[x, y] : channel::views::line(p0, p1)) {
+    // do something with the coordinates
+}
+
+// Thick line example
+for (auto &&stroke : channel::views::line(p0, p1, thickness)) {
+    for (auto &&[x, y] : stroke) {
+        // do something with the coordinates
+    }
+}
+\end{DoxyVerb}
+
+
+The {\ttfamily \doxylink{classchannel_1_1ranges_1_1thick__line__view}{channel::\+ranges::\+thick\+\_\+line\+\_\+view}} and {\ttfamily \doxylink{classchannel_1_1ranges_1_1thin__line__view}{channel::\+ranges::\+thin\+\_\+line\+\_\+view}} are views and may be treated as such. The object {\ttfamily channel::\+views::\+line} selects the view class based on the arguments passed to the functor.\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysection{\texorpdfstring{To build from a Git checkout:\+}{To build from a Git checkout:\+}}\label{md__r_e_a_d_m_e_autotoc_md2}
+\begin{DoxyVerb}touch aclocal.m4 configure Makefile.am test/Makefile.am
+touch Makefile.in test/Makefile.in
+./configure CXX='clang++' CXXFLAGS='-stdlib=libc++'
+make && make check
+\end{DoxyVerb}
+ 

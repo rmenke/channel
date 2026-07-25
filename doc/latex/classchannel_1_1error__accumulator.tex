@@ -1,0 +1,131 @@
+\doxysection{channel::\+error\+\_\+accumulator Class Reference}
+\hypertarget{classchannel_1_1error__accumulator}{}\label{classchannel_1_1error__accumulator}\index{channel::error\_accumulator@{channel::error\_accumulator}}
+
+
+The Bresenham error accumulator.  
+
+
+
+
+{\ttfamily \+\#include $<$channel.\+hpp$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structchannel_1_1error__accumulator_1_1update__result}{update\+\_\+result}}
+\begin{DoxyCompactList}\small\item\em A pair indicating the required motions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classchannel_1_1error__accumulator_aea8e2a26b27a4a976c5726d52743e333}\label{classchannel_1_1error__accumulator_aea8e2a26b27a4a976c5726d52743e333} 
+constexpr {\bfseries error\+\_\+accumulator} () noexcept=default
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\Hypertarget{classchannel_1_1error__accumulator_a9c836132bd407a403101ea2c45756fc9}\label{classchannel_1_1error__accumulator_a9c836132bd407a403101ea2c45756fc9} 
+constexpr {\bfseries error\+\_\+accumulator} (error\+\_\+accumulator const \&) noexcept=default
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\Hypertarget{classchannel_1_1error__accumulator_ad98299320e82349043f10afa2376f0fa}\label{classchannel_1_1error__accumulator_ad98299320e82349043f10afa2376f0fa} 
+constexpr {\bfseries error\+\_\+accumulator} (error\+\_\+accumulator \&\&) noexcept=default
+\begin{DoxyCompactList}\small\item\em Move constructor. \end{DoxyCompactList}\item 
+constexpr \doxymbox{\hyperlink{classchannel_1_1error__accumulator_a8a26436d8d562f3eaf2777a712d2905f}{error\+\_\+accumulator}} (auto \&\&dx, auto \&\&dy)
+\begin{DoxyCompactList}\small\item\em Accumulator constructor. \end{DoxyCompactList}\item 
+constexpr \doxymbox{\hyperlink{classchannel_1_1error__accumulator_a87645a07db67ab21c3d31aa0164104da}{error\+\_\+accumulator}} (\doxymbox{\hyperlink{structchannel_1_1point}{point}} delta)
+\begin{DoxyCompactList}\small\item\em Accumulator constructor. \end{DoxyCompactList}\item 
+\Hypertarget{classchannel_1_1error__accumulator_a6f945609819e5c837d52617402175dca}\label{classchannel_1_1error__accumulator_a6f945609819e5c837d52617402175dca} 
+constexpr \doxymbox{\hyperlink{classchannel_1_1error__accumulator_aea8e2a26b27a4a976c5726d52743e333}{error\+\_\+accumulator}} \& {\bfseries operator=} (\doxymbox{\hyperlink{classchannel_1_1error__accumulator_aea8e2a26b27a4a976c5726d52743e333}{error\+\_\+accumulator}} const \&) noexcept=default
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+\Hypertarget{classchannel_1_1error__accumulator_a72e3de3c57bbb642f46397a9ca01c582}\label{classchannel_1_1error__accumulator_a72e3de3c57bbb642f46397a9ca01c582} 
+constexpr \doxymbox{\hyperlink{classchannel_1_1error__accumulator_aea8e2a26b27a4a976c5726d52743e333}{error\+\_\+accumulator}} \& {\bfseries operator=} (\doxymbox{\hyperlink{classchannel_1_1error__accumulator_aea8e2a26b27a4a976c5726d52743e333}{error\+\_\+accumulator}} \&\&) noexcept=default
+\begin{DoxyCompactList}\small\item\em Move assignment operator. \end{DoxyCompactList}\item 
+constexpr \doxymbox{\hyperlink{structchannel_1_1error__accumulator_1_1update__result}{update\+\_\+result}} \doxymbox{\hyperlink{classchannel_1_1error__accumulator_a09abd2aa40720b2b7cb7e22027fb08de}{update}} () noexcept
+\begin{DoxyCompactList}\small\item\em Update the error, returning the previous status. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classchannel_1_1error__accumulator_aabd18bc40174a8fbbe24e506d8868e19}\label{classchannel_1_1error__accumulator_aabd18bc40174a8fbbe24e506d8868e19} 
+int {\bfseries \+\_\+dx}
+\begin{DoxyCompactList}\small\item\em The distance that will be moved along the x-\/axis. \end{DoxyCompactList}\item 
+\Hypertarget{classchannel_1_1error__accumulator_a3d6077a6639352d5f40930054f446b4b}\label{classchannel_1_1error__accumulator_a3d6077a6639352d5f40930054f446b4b} 
+int {\bfseries \+\_\+dy}
+\begin{DoxyCompactList}\small\item\em The distance that will be moved along the y-\/axis. \end{DoxyCompactList}\item 
+\Hypertarget{classchannel_1_1error__accumulator_ac6520fde276b326c0d2235fb300e2dca}\label{classchannel_1_1error__accumulator_ac6520fde276b326c0d2235fb300e2dca} 
+int {\bfseries \+\_\+error}
+\begin{DoxyCompactList}\small\item\em The accumulated error. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The Bresenham error accumulator. 
+
+A simple object that maintains the accumulated error from the ideal line. Depending on the value of {\ttfamily \+\_\+error}, the \doxylink{classchannel_1_1error__accumulator_a09abd2aa40720b2b7cb7e22027fb08de}{update()} member function may indicate that motion is needed along the x-\/axis, the y-\/axis, or both.
+
+The operation is deceptively simple. When the error accumulator exceeds $-\frac{\mathop{\mathit{dy}}}{2}$, it emits an instruction to move horizontally. When the error accumulator falls below $\frac{\mathop{\mathit{dx}}}{2}$, it emits an instruction to move vertically. It then updates the error accumulator according to the move:\+ a vertical move increases the accumulator by $\mathop{\mathit{dx}}$ and an horizontal move decreases it by $\mathop{\mathit{dy}}$; both changes may happen but at least one is guaranteed to occur. For the first octant, this means that a vertical move is emitted for roughly $\frac{\mathop{\mathit{dx}}} {\mathop{\mathit{dy}}}$ horizontal moves.
+
+\begin{DoxyNote}{Note}
+This is actually Zingl\textquotesingle{}s modification of Bresenham\textquotesingle{}s algorithm. It requires one more comparison per \doxylink{classchannel_1_1error__accumulator_a09abd2aa40720b2b7cb7e22027fb08de}{update()} call than traditional Bresenham, but it is octant-\/independent while Bresenham is restricted to the first octant.
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\href{https://en.wikipedia.org/wiki/Bresenham's_line_algorithm}{\texttt{https:\+/\+/\+en.\+wikipedia.\+org/\+wiki/\+\+Bresenham\textquotesingle{}s\+\_\+line\+\_\+algorithm}} 
+
+\href{https://zingl.github.io/Bresenham.pdf}{\texttt{https:\+/\+/\+zingl.\+github.\+io/\+\+Bresenham.\+pdf}} 
+\end{DoxySeeAlso}
+
+
+\label{classchannel_1_1error__accumulator_doc-constructors}
+\Hypertarget{classchannel_1_1error__accumulator_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classchannel_1_1error__accumulator_a8a26436d8d562f3eaf2777a712d2905f}\index{channel::error\_accumulator@{channel::error\_accumulator}!error\_accumulator@{error\_accumulator}}
+\index{error\_accumulator@{error\_accumulator}!channel::error\_accumulator@{channel::error\_accumulator}}
+\doxysubsubsection{\texorpdfstring{error\_accumulator()}{error\_accumulator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classchannel_1_1error__accumulator_a8a26436d8d562f3eaf2777a712d2905f} 
+channel::\+error\+\_\+accumulator::\+error\+\_\+accumulator (\begin{DoxyParamCaption}\item[{auto \&\&}]{dx}{, }\item[{auto \&\&}]{dy}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Accumulator constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dx} & the absolute change in the x value  \\
+\hline
+{\em dy} & the absolute change in the y value \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classchannel_1_1error__accumulator_a87645a07db67ab21c3d31aa0164104da}\index{channel::error\_accumulator@{channel::error\_accumulator}!error\_accumulator@{error\_accumulator}}
+\index{error\_accumulator@{error\_accumulator}!channel::error\_accumulator@{channel::error\_accumulator}}
+\doxysubsubsection{\texorpdfstring{error\_accumulator()}{error\_accumulator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classchannel_1_1error__accumulator_a87645a07db67ab21c3d31aa0164104da} 
+channel::\+error\+\_\+accumulator::\+error\+\_\+accumulator (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structchannel_1_1point}{point}}}]{delta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Accumulator constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & the magnitude of change in both directions \\
+\hline
+\end{DoxyParams}
+
+
+\label{classchannel_1_1error__accumulator_doc-func-members}
+\Hypertarget{classchannel_1_1error__accumulator_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classchannel_1_1error__accumulator_a09abd2aa40720b2b7cb7e22027fb08de}\index{channel::error\_accumulator@{channel::error\_accumulator}!update@{update}}
+\index{update@{update}!channel::error\_accumulator@{channel::error\_accumulator}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{classchannel_1_1error__accumulator_a09abd2aa40720b2b7cb7e22027fb08de} 
+\doxymbox{\hyperlink{structchannel_1_1error__accumulator_1_1update__result}{update\+\_\+result}} channel::\+error\+\_\+accumulator::\+update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
+
+
+
+Update the error, returning the previous status. 
+
+The range of values for {\ttfamily \+\_\+error} is partitioned into three subranges, indicating that movement is required along the x-\/axis, the y-\/axis, or both.
+
+\begin{DoxyReturn}{Returns}
+an \doxylink{structchannel_1_1error__accumulator_1_1update__result}{update\+\_\+result} structure 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+channel.\+hpp\end{DoxyCompactItemize}

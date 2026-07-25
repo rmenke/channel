@@ -1,0 +1,91 @@
+\doxysection{channel::\+ranges::\+thick\+\_\+line\+\_\+view::\+iterator Class Reference}
+\hypertarget{classchannel_1_1ranges_1_1thick__line__view_1_1iterator}{}\label{classchannel_1_1ranges_1_1thick__line__view_1_1iterator}\index{channel::ranges::thick\_line\_view::iterator@{channel::ranges::thick\_line\_view::iterator}}
+
+
+An iterator that manages multiple thin iterators in tandem.  
+
+
+
+
+{\ttfamily \+\#include $<$channel.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$std::\+ranges::\+range Range$>$ }\\\doxymbox{\hyperlink{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_a5cebeca5256b2d9763a03158337f797b}{iterator}} (Range \&\&iters)
+\begin{DoxyCompactList}\small\item\em Construct a thick iterator from a set of thin iterators. \end{DoxyCompactList}\item 
+\Hypertarget{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_ab90475a53792b105d53c1ed42c1ac601}\label{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_ab90475a53792b105d53c1ed42c1ac601} 
+reference {\bfseries operator\texorpdfstring{$\ast$}{*}} () const
+\begin{DoxyCompactList}\small\item\em Extract the current value from the iterator. \end{DoxyCompactList}\item 
+\Hypertarget{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_ab34b34e5b0a3931917fbe7d7562e833d}\label{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_ab34b34e5b0a3931917fbe7d7562e833d} 
+pointer {\bfseries operator-\/$>$} () const
+\begin{DoxyCompactList}\small\item\em Extract the current value from the iterator. \end{DoxyCompactList}\item 
+\Hypertarget{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_aae50b8d69fc3cf1439ed6533281a9bca}\label{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_aae50b8d69fc3cf1439ed6533281a9bca} 
+iterator \& {\bfseries operator++} ()
+\begin{DoxyCompactList}\small\item\em Preincrement operator. \end{DoxyCompactList}\item 
+\Hypertarget{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_a5ba2ee026025c820a4700813a24965b3}\label{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_a5ba2ee026025c820a4700813a24965b3} 
+iterator {\bfseries operator++} (int)
+\begin{DoxyCompactList}\small\item\em Postincrement operator. \end{DoxyCompactList}\item 
+\Hypertarget{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_ad46248a64bf845bb306e4aa7fe6c9e73}\label{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_ad46248a64bf845bb306e4aa7fe6c9e73} 
+bool {\bfseries operator==} (const iterator \&rhs) const noexcept=default
+\begin{DoxyCompactList}\small\item\em Equality operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static iterator \doxymbox{\hyperlink{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_ac659de5cdef6d65c4d3c9f2d7e474816}{create}} (\doxymbox{\hyperlink{structchannel_1_1point}{point}} const \&current, \doxymbox{\hyperlink{structchannel_1_1point}{point}} const \&delta, \doxymbox{\hyperlink{structchannel_1_1point}{point}} const \&move, unsigned int r2)
+\begin{DoxyCompactList}\small\item\em Factory method to produce an iterator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An iterator that manages multiple thin iterators in tandem. 
+
+\label{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_doc-constructors}
+\Hypertarget{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_a5cebeca5256b2d9763a03158337f797b}\index{channel::ranges::thick\_line\_view::iterator@{channel::ranges::thick\_line\_view::iterator}!iterator@{iterator}}
+\index{iterator@{iterator}!channel::ranges::thick\_line\_view::iterator@{channel::ranges::thick\_line\_view::iterator}}
+\doxysubsubsection{\texorpdfstring{iterator()}{iterator()}}
+{\footnotesize\ttfamily \label{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_a5cebeca5256b2d9763a03158337f797b} 
+template$<$std::\+ranges::\+range Range$>$ \\
+channel::\+ranges::\+thick\+\_\+line\+\_\+view::\+iterator::\+iterator (\begin{DoxyParamCaption}\item[{Range \&\&}]{iters}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a thick iterator from a set of thin iterators. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em iters} & a collection of point generating iterators \\
+\hline
+\end{DoxyParams}
+
+
+\label{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_doc-func-members}
+\Hypertarget{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_ac659de5cdef6d65c4d3c9f2d7e474816}\index{channel::ranges::thick\_line\_view::iterator@{channel::ranges::thick\_line\_view::iterator}!create@{create}}
+\index{create@{create}!channel::ranges::thick\_line\_view::iterator@{channel::ranges::thick\_line\_view::iterator}}
+\doxysubsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily \label{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_ac659de5cdef6d65c4d3c9f2d7e474816} 
+\doxymbox{\hyperlink{classchannel_1_1ranges_1_1thick__line__view_1_1iterator}{thick\+\_\+line\+\_\+view::\+iterator}} channel::\+ranges::\+thick\+\_\+line\+\_\+view::\+iterator::\+create (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structchannel_1_1point}{point}} const \&}]{current}{, }\item[{\doxymbox{\hyperlink{structchannel_1_1point}{point}} const \&}]{delta}{, }\item[{\doxymbox{\hyperlink{structchannel_1_1point}{point}} const \&}]{move}{, }\item[{unsigned int}]{r2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Factory method to produce an iterator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current} & the current position of the iterator  \\
+\hline
+{\em delta} & the absolute change of position  \\
+\hline
+{\em move} & the direction of movement  \\
+\hline
+{\em r2} & the square of the radius \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+channel.\+hpp\end{DoxyCompactItemize}
