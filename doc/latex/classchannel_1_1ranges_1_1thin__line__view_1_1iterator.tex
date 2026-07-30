@@ -16,22 +16,19 @@ Collaboration diagram for channel::\+ranges::\+thin\+\_\+line\+\_\+view::\+itera
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=314pt]{classchannel_1_1ranges_1_1thin__line__view_1_1iterator__coll__graph}
+\includegraphics[width=218pt]{classchannel_1_1ranges_1_1thin__line__view_1_1iterator__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-constexpr \doxymbox{\hyperlink{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_a799eb41624f6ddf413a3a3a464b12e88}{iterator}} (auto \&\&current, \doxymbox{\hyperlink{classchannel_1_1error__accumulator}{error\+\_\+accumulator}} error, auto \&\&move)
+constexpr \doxymbox{\hyperlink{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_ac37046d504912cd66dce10d8b0db0770}{iterator}} (int x, int y, int sx, int sy, \doxymbox{\hyperlink{classchannel_1_1error__accumulator}{error\+\_\+accumulator}} error)
 \begin{DoxyCompactList}\small\item\em Construct an iterator with an initial error. \end{DoxyCompactList}\item 
-constexpr \doxymbox{\hyperlink{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_a486cbb5abe40d991157dc9e9ff8c4e80}{iterator}} (auto \&\&current, auto \&\&delta, auto \&\&move)
+constexpr \doxymbox{\hyperlink{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_a1a02ff49416908468c863f55c1ca0539}{iterator}} (int x, int y, int dx, int dy, int sx, int sy)
 \begin{DoxyCompactList}\small\item\em Construct an iterator with a delta. \end{DoxyCompactList}\item 
 \Hypertarget{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_ae33228166efcfefafc3249414d2d59c9}\label{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_ae33228166efcfefafc3249414d2d59c9} 
 constexpr reference {\bfseries operator\texorpdfstring{$\ast$}{*}} () const noexcept
-\begin{DoxyCompactList}\small\item\em Extract the current value from the iterator. \end{DoxyCompactList}\item 
-\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_a8d254c9dd4f6d7120e03a6746298dd93}\label{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_a8d254c9dd4f6d7120e03a6746298dd93} 
-constexpr pointer {\bfseries operator-\/$>$} () const noexcept
-\begin{DoxyCompactList}\small\item\em Extract the current value from the iterator. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em The current value from the iterator. \end{DoxyCompactList}\item 
 \Hypertarget{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_af012a8ff1157f854b1c41994897e8b16}\label{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_af012a8ff1157f854b1c41994897e8b16} 
 constexpr iterator \& {\bfseries operator++} ()
 \begin{DoxyCompactList}\small\item\em Preincrement operator. \end{DoxyCompactList}\item 
@@ -45,14 +42,17 @@ constexpr bool {\bfseries operator==} (iterator const \&rhs) const noexcept
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_ab734a0c4b412b6f8197c54684fb04b20}\label{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_ab734a0c4b412b6f8197c54684fb04b20} 
-\doxymbox{\hyperlink{structchannel_1_1point}{point}} {\bfseries \+\_\+current}
-\begin{DoxyCompactList}\small\item\em Current position of the iterator. \end{DoxyCompactList}\item 
+point {\bfseries \+\_\+current}
+\begin{DoxyCompactList}\small\item\em Position of the iterator. \end{DoxyCompactList}\item 
+\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_ad06be90d5ba834d03d05031788f75dea}\label{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_ad06be90d5ba834d03d05031788f75dea} 
+int {\bfseries \+\_\+step\+\_\+x}
+\begin{DoxyCompactList}\small\item\em Direction of horizontal movement. \end{DoxyCompactList}\item 
+\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_acc37015af552c8b1ec4b82db9159eb10}\label{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_acc37015af552c8b1ec4b82db9159eb10} 
+int {\bfseries \+\_\+step\+\_\+y}
+\begin{DoxyCompactList}\small\item\em Direction of vertical movement. \end{DoxyCompactList}\item 
 \Hypertarget{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_ab0780e89786ba74cec74873f6764e322}\label{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_ab0780e89786ba74cec74873f6764e322} 
 \doxymbox{\hyperlink{classchannel_1_1error__accumulator}{error\+\_\+accumulator}} {\bfseries \+\_\+error}
-\begin{DoxyCompactList}\small\item\em Error accrued reaching this state. \end{DoxyCompactList}\item 
-\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_abf354b73e6c6cf1bc4640ac26ef2bf13}\label{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_abf354b73e6c6cf1bc4640ac26ef2bf13} 
-\doxymbox{\hyperlink{structchannel_1_1point}{point}} {\bfseries \+\_\+move}
-\begin{DoxyCompactList}\small\item\em Direction of movement. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Error accrued reaching this state. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -63,11 +63,11 @@ The ideal ray is defined by its initial coordinates, the delta vector (magnitude
 \label{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_doc-constructors}
 \Hypertarget{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_doc-constructors}
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_a799eb41624f6ddf413a3a3a464b12e88}\index{channel::ranges::thin\_line\_view::iterator@{channel::ranges::thin\_line\_view::iterator}!iterator@{iterator}}
+\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_ac37046d504912cd66dce10d8b0db0770}\index{channel::ranges::thin\_line\_view::iterator@{channel::ranges::thin\_line\_view::iterator}!iterator@{iterator}}
 \index{iterator@{iterator}!channel::ranges::thin\_line\_view::iterator@{channel::ranges::thin\_line\_view::iterator}}
 \doxysubsubsection{\texorpdfstring{iterator()}{iterator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \label{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_a799eb41624f6ddf413a3a3a464b12e88} 
-channel::\+ranges::\+thin\+\_\+line\+\_\+view::\+iterator::\+iterator (\begin{DoxyParamCaption}\item[{auto \&\&}]{current}{, }\item[{\doxymbox{\hyperlink{classchannel_1_1error__accumulator}{error\+\_\+accumulator}}}]{error}{, }\item[{auto \&\&}]{move}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily \label{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_ac37046d504912cd66dce10d8b0db0770} 
+channel::\+ranges::\+thin\+\_\+line\+\_\+view::\+iterator::\+iterator (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{int}]{sx}{, }\item[{int}]{sy}{, }\item[{\doxymbox{\hyperlink{classchannel_1_1error__accumulator}{error\+\_\+accumulator}}}]{error}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 
@@ -75,18 +75,22 @@ Construct an iterator with an initial error.
 
 
 \begin{DoxyParams}{Parameters}
-{\em current} & the starting point  \\
+{\em x} & the x position of the iterator  \\
 \hline
-{\em error} & the initial error  \\
+{\em y} & the y position of the iterator  \\
 \hline
-{\em move} & the direction in which to advance \\
+{\em sx} & the movement in the x direction  \\
+\hline
+{\em sy} & the movement in the y direction  \\
+\hline
+{\em error} & the error accumulator \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_a486cbb5abe40d991157dc9e9ff8c4e80}\index{channel::ranges::thin\_line\_view::iterator@{channel::ranges::thin\_line\_view::iterator}!iterator@{iterator}}
+\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_a1a02ff49416908468c863f55c1ca0539}\index{channel::ranges::thin\_line\_view::iterator@{channel::ranges::thin\_line\_view::iterator}!iterator@{iterator}}
 \index{iterator@{iterator}!channel::ranges::thin\_line\_view::iterator@{channel::ranges::thin\_line\_view::iterator}}
 \doxysubsubsection{\texorpdfstring{iterator()}{iterator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \label{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_a486cbb5abe40d991157dc9e9ff8c4e80} 
-channel::\+ranges::\+thin\+\_\+line\+\_\+view::\+iterator::\+iterator (\begin{DoxyParamCaption}\item[{auto \&\&}]{current}{, }\item[{auto \&\&}]{delta}{, }\item[{auto \&\&}]{move}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily \label{classchannel_1_1ranges_1_1thin__line__view_1_1iterator_a1a02ff49416908468c863f55c1ca0539} 
+channel::\+ranges::\+thin\+\_\+line\+\_\+view::\+iterator::\+iterator (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{int}]{dx}{, }\item[{int}]{dy}{, }\item[{int}]{sx}{, }\item[{int}]{sy}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 
@@ -94,11 +98,17 @@ Construct an iterator with a delta.
 
 
 \begin{DoxyParams}{Parameters}
-{\em current} & the starting point  \\
+{\em x} & the x position of the iterator  \\
 \hline
-{\em delta} & the absolute differences  \\
+{\em y} & the y position of the iterator  \\
 \hline
-{\em move} & the direction in which to advance \\
+{\em dx} & the absolute change in the x direction  \\
+\hline
+{\em dy} & the absolute change in the y direction  \\
+\hline
+{\em sx} & the movement in the x direction  \\
+\hline
+{\em sy} & the movement in the y direction \\
 \hline
 \end{DoxyParams}
 

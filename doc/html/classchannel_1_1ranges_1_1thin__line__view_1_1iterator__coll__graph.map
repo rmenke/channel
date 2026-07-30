@@ -1,7 +1,5 @@
 <map id="channel::ranges::thin_line_view::iterator" name="channel::ranges::thin_line_view::iterator">
-<area shape="rect" id="Node000001" title="An iterator that generates the integral points nearest to the ideal ray." alt="" coords="69,117,214,155"/>
-<area shape="rect" id="Node000002" href="$structchannel_1_1point.html" title="A 2&#45;D coordinate pair." alt="" coords="5,5,110,29"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,39,131,116,127,119,71,42"/>
-<area shape="rect" id="Node000003" href="$classchannel_1_1error__accumulator.html" title="The Bresenham error accumulator." alt="" coords="134,5,317,29"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="212,42,156,119,152,116,208,39"/>
+<area shape="rect" id="Node000001" title="An iterator that generates the integral points nearest to the ideal ray." alt="" coords="25,99,170,136"/>
+<area shape="rect" id="Node000002" href="$classchannel_1_1error__accumulator.html" title="The Bresenham error accumulator." alt="" coords="5,5,189,29"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,43,100,99,94,99,94,43"/>
 </map>

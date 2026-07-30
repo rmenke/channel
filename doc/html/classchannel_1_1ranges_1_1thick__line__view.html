@@ -34,7 +34,7 @@ mermaid.initialize({ startOnLoad: true, theme: theme });
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">channel<span id="projectnumber">&#160;1.0.0</span>
+   <div id="projectname">channel<span id="projectnumber">&#160;1.0.1</span>
    </div>
    <div id="projectbrief">Bresenham-Murphy algorithm in C++</div>
   </td>
@@ -87,11 +87,6 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('classchannel_1
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="channel_8hpp_source.html">channel.hpp</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for channel::ranges::thick_line_view:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classchannel_1_1ranges_1_1thick__line__view__coll__graph.svg" width="162" height="198"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -100,8 +95,9 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9168df5b850f8117bba768461d6362bd" id="r_a9168df5b850f8117bba768461d6362bd"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a9168df5b850f8117bba768461d6362bd">thick_line_view</a> (auto &amp;&amp;p0, auto &amp;&amp;p1, auto &amp;&amp;radius)</td></tr>
-<tr class="memdesc:a9168df5b850f8117bba768461d6362bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a thick line between two endpoints with a given thickness.  <br /></td></tr>
+<tr class="memitem:a0485d3c3489d68888697a32509ff4e85" id="r_a0485d3c3489d68888697a32509ff4e85"><td class="memItemLeft"><a id="a0485d3c3489d68888697a32509ff4e85" name="a0485d3c3489d68888697a32509ff4e85"></a>
+&#160;</td><td class="memItemRight"><b>thick_line_view</b> (int x0, int y0, int x1, int y1, unsigned short radius)</td></tr>
+<tr class="memdesc:a0485d3c3489d68888697a32509ff4e85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a thick line between two endpoints with a given thickness. <br /></td></tr>
 <tr class="memitem:ab5ad5708fcf73cbddc914c08c0e7f81c" id="r_ab5ad5708fcf73cbddc914c08c0e7f81c"><td class="memItemLeft"><a id="ab5ad5708fcf73cbddc914c08c0e7f81c" name="ab5ad5708fcf73cbddc914c08c0e7f81c"></a>
 <a class="el" href="classchannel_1_1ranges_1_1thick__line__view_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight"><b>begin</b> () const</td></tr>
 <tr class="memdesc:ab5ad5708fcf73cbddc914c08c0e7f81c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an iterator that is positioned at the starting coordinates. <br /></td></tr>
@@ -111,73 +107,22 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a9852a7002400b9983085cf1c682e2ff3" id="r_a9852a7002400b9983085cf1c682e2ff3"><td class="memItemLeft"><a id="a9852a7002400b9983085cf1c682e2ff3" name="a9852a7002400b9983085cf1c682e2ff3"></a>
-<a class="el" href="structchannel_1_1point.html">point</a>&#160;</td><td class="memItemRight"><b>_p0</b></td></tr>
-<tr class="memdesc:a9852a7002400b9983085cf1c682e2ff3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The starting point. <br /></td></tr>
-<tr class="memitem:ad49f25ff9d58c15fd4841bc91d2381c2" id="r_ad49f25ff9d58c15fd4841bc91d2381c2"><td class="memItemLeft"><a id="ad49f25ff9d58c15fd4841bc91d2381c2" name="ad49f25ff9d58c15fd4841bc91d2381c2"></a>
-<a class="el" href="structchannel_1_1point.html">point</a>&#160;</td><td class="memItemRight"><b>_p1</b></td></tr>
-<tr class="memdesc:ad49f25ff9d58c15fd4841bc91d2381c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The finishing point. <br /></td></tr>
+<tr class="memitem:a6acaf2bfeede28c5ce5fae8bebe04408" id="r_a6acaf2bfeede28c5ce5fae8bebe04408"><td class="memItemLeft"><a id="a6acaf2bfeede28c5ce5fae8bebe04408" name="a6acaf2bfeede28c5ce5fae8bebe04408"></a>
+int&#160;</td><td class="memItemRight"><b>_y0</b></td></tr>
+<tr class="memdesc:a6acaf2bfeede28c5ce5fae8bebe04408"><td class="mdescLeft">&#160;</td><td class="mdescRight">The starting point. <br /></td></tr>
+<tr class="memitem:a8510195a6b36e571cb7435434380d41f" id="r_a8510195a6b36e571cb7435434380d41f"><td class="memItemLeft"><a id="a8510195a6b36e571cb7435434380d41f" name="a8510195a6b36e571cb7435434380d41f"></a>
+int&#160;</td><td class="memItemRight"><b>_y1</b></td></tr>
+<tr class="memdesc:a8510195a6b36e571cb7435434380d41f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The finishing point. <br /></td></tr>
 <tr class="memitem:acaf829fe5d4c209cc40d187d0dd2fefc" id="r_acaf829fe5d4c209cc40d187d0dd2fefc"><td class="memItemLeft"><a id="acaf829fe5d4c209cc40d187d0dd2fefc" name="acaf829fe5d4c209cc40d187d0dd2fefc"></a>
 unsigned int&#160;</td><td class="memItemRight"><b>_r2</b></td></tr>
 <tr class="memdesc:acaf829fe5d4c209cc40d187d0dd2fefc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The radius squared. <br /></td></tr>
-<tr class="memitem:a412f4a3f639e8e887bc29bbe3e81c110" id="r_a412f4a3f639e8e887bc29bbe3e81c110"><td class="memItemLeft"><a id="a412f4a3f639e8e887bc29bbe3e81c110" name="a412f4a3f639e8e887bc29bbe3e81c110"></a>
-<a class="el" href="structchannel_1_1point.html">point</a>&#160;</td><td class="memItemRight"><b>_delta</b></td></tr>
-<tr class="memdesc:a412f4a3f639e8e887bc29bbe3e81c110"><td class="mdescLeft">&#160;</td><td class="mdescRight">The absolute difference between the endpoints. <br /></td></tr>
-<tr class="memitem:a178026d3827645a9c59714ca878f2a60" id="r_a178026d3827645a9c59714ca878f2a60"><td class="memItemLeft"><a id="a178026d3827645a9c59714ca878f2a60" name="a178026d3827645a9c59714ca878f2a60"></a>
-<a class="el" href="structchannel_1_1point.html">point</a>&#160;</td><td class="memItemRight"><b>_move</b></td></tr>
-<tr class="memdesc:a178026d3827645a9c59714ca878f2a60"><td class="mdescLeft">&#160;</td><td class="mdescRight">The direction of movement along each axis. <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The Bresenham-Murphy algorithm as a range factory. </p>
 <p>This is an implementation of Murphy's extension to the Bresenham algorithm. It works by generating a perpendicular line to the baseline, then generating parallel lines using the perpendicular as the starting point. Each parallel is adjusted so that their diagonal moves mesh together, leaving no gaps.</p>
 <p>Murphy's original paper was impenetrable so this version of the algorithm was derived from first principles rather than the flowcharts. It differs from the algorithm in the paper by the way it generates the perpendicular and the way it calculates the initial error values of the parallel lines.</p>
 <p>The initial parallel is generated by taking a long line segment and rejecting the points that fall outside the requested radius. This is less efficient than Murphy's estimation of sine and cosine, but doesn't involve floating-point calculations. </p>
-</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a9168df5b850f8117bba768461d6362bd" name="a9168df5b850f8117bba768461d6362bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9168df5b850f8117bba768461d6362bd">&#9670;&#160;</a></span>thick_line_view()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">channel::ranges::thick_line_view::thick_line_view </td>
-          <td>(</td>
-          <td class="paramtype">auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>p0</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>p1</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>radius</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Construct a thick line between two endpoints with a given thickness. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">p0</td><td>the starting point  </td></tr>
-    <tr><td class="paramname">p1</td><td>the ending point  </td></tr>
-    <tr><td class="paramname">radius</td><td>the half-width of the thick line </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/<a class="el" href="channel_8hpp_source.html">channel.hpp</a></li>
 </ul>
 </div><!-- contents -->

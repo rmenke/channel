@@ -34,7 +34,7 @@ mermaid.initialize({ startOnLoad: true, theme: theme });
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">channel<span id="projectnumber">&#160;1.0.0</span>
+   <div id="projectname">channel<span id="projectnumber">&#160;1.0.1</span>
    </div>
    <div id="projectbrief">Bresenham-Murphy algorithm in C++</div>
   </td>
@@ -90,21 +90,18 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('classchannel_1
 <div class="dynheader">
 Collaboration diagram for channel::ranges::thin_line_view::iterator:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classchannel_1_1ranges_1_1thin__line__view_1_1iterator__coll__graph.svg" width="323" height="160"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classchannel_1_1ranges_1_1thin__line__view_1_1iterator__coll__graph.svg" width="195" height="142"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a799eb41624f6ddf413a3a3a464b12e88" id="r_a799eb41624f6ddf413a3a3a464b12e88"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#a799eb41624f6ddf413a3a3a464b12e88">iterator</a> (auto &amp;&amp;current, <a class="el" href="classchannel_1_1error__accumulator.html">error_accumulator</a> error, auto &amp;&amp;move)</td></tr>
-<tr class="memdesc:a799eb41624f6ddf413a3a3a464b12e88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an iterator with an initial error.  <br /></td></tr>
-<tr class="memitem:a486cbb5abe40d991157dc9e9ff8c4e80" id="r_a486cbb5abe40d991157dc9e9ff8c4e80"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#a486cbb5abe40d991157dc9e9ff8c4e80">iterator</a> (auto &amp;&amp;current, auto &amp;&amp;delta, auto &amp;&amp;move)</td></tr>
-<tr class="memdesc:a486cbb5abe40d991157dc9e9ff8c4e80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an iterator with a delta.  <br /></td></tr>
+<tr class="memitem:ac37046d504912cd66dce10d8b0db0770" id="r_ac37046d504912cd66dce10d8b0db0770"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#ac37046d504912cd66dce10d8b0db0770">iterator</a> (int x, int y, int sx, int sy, <a class="el" href="classchannel_1_1error__accumulator.html">error_accumulator</a> error)</td></tr>
+<tr class="memdesc:ac37046d504912cd66dce10d8b0db0770"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an iterator with an initial error.  <br /></td></tr>
+<tr class="memitem:a1a02ff49416908468c863f55c1ca0539" id="r_a1a02ff49416908468c863f55c1ca0539"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#a1a02ff49416908468c863f55c1ca0539">iterator</a> (int x, int y, int dx, int dy, int sx, int sy)</td></tr>
+<tr class="memdesc:a1a02ff49416908468c863f55c1ca0539"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an iterator with a delta.  <br /></td></tr>
 <tr class="memitem:ae33228166efcfefafc3249414d2d59c9" id="r_ae33228166efcfefafc3249414d2d59c9"><td class="memItemLeft"><a id="ae33228166efcfefafc3249414d2d59c9" name="ae33228166efcfefafc3249414d2d59c9"></a>
 constexpr reference&#160;</td><td class="memItemRight"><b>operator*</b> () const noexcept</td></tr>
-<tr class="memdesc:ae33228166efcfefafc3249414d2d59c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract the current value from the iterator. <br /></td></tr>
-<tr class="memitem:a8d254c9dd4f6d7120e03a6746298dd93" id="r_a8d254c9dd4f6d7120e03a6746298dd93"><td class="memItemLeft"><a id="a8d254c9dd4f6d7120e03a6746298dd93" name="a8d254c9dd4f6d7120e03a6746298dd93"></a>
-constexpr pointer&#160;</td><td class="memItemRight"><b>operator-&gt;</b> () const noexcept</td></tr>
-<tr class="memdesc:a8d254c9dd4f6d7120e03a6746298dd93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract the current value from the iterator. <br /></td></tr>
+<tr class="memdesc:ae33228166efcfefafc3249414d2d59c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current value from the iterator. <br /></td></tr>
 <tr class="memitem:af012a8ff1157f854b1c41994897e8b16" id="r_af012a8ff1157f854b1c41994897e8b16"><td class="memItemLeft"><a id="af012a8ff1157f854b1c41994897e8b16" name="af012a8ff1157f854b1c41994897e8b16"></a>
 constexpr iterator &amp;&#160;</td><td class="memItemRight"><b>operator++</b> ()</td></tr>
 <tr class="memdesc:af012a8ff1157f854b1c41994897e8b16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Preincrement operator. <br /></td></tr>
@@ -118,21 +115,24 @@ constexpr bool&#160;</td><td class="memItemRight"><b>operator==</b> (iterator co
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ab734a0c4b412b6f8197c54684fb04b20" id="r_ab734a0c4b412b6f8197c54684fb04b20"><td class="memItemLeft"><a id="ab734a0c4b412b6f8197c54684fb04b20" name="ab734a0c4b412b6f8197c54684fb04b20"></a>
-<a class="el" href="structchannel_1_1point.html">point</a>&#160;</td><td class="memItemRight"><b>_current</b></td></tr>
-<tr class="memdesc:ab734a0c4b412b6f8197c54684fb04b20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current position of the iterator. <br /></td></tr>
+point&#160;</td><td class="memItemRight"><b>_current</b></td></tr>
+<tr class="memdesc:ab734a0c4b412b6f8197c54684fb04b20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position of the iterator. <br /></td></tr>
+<tr class="memitem:ad06be90d5ba834d03d05031788f75dea" id="r_ad06be90d5ba834d03d05031788f75dea"><td class="memItemLeft"><a id="ad06be90d5ba834d03d05031788f75dea" name="ad06be90d5ba834d03d05031788f75dea"></a>
+int&#160;</td><td class="memItemRight"><b>_step_x</b></td></tr>
+<tr class="memdesc:ad06be90d5ba834d03d05031788f75dea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Direction of horizontal movement. <br /></td></tr>
+<tr class="memitem:acc37015af552c8b1ec4b82db9159eb10" id="r_acc37015af552c8b1ec4b82db9159eb10"><td class="memItemLeft"><a id="acc37015af552c8b1ec4b82db9159eb10" name="acc37015af552c8b1ec4b82db9159eb10"></a>
+int&#160;</td><td class="memItemRight"><b>_step_y</b></td></tr>
+<tr class="memdesc:acc37015af552c8b1ec4b82db9159eb10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Direction of vertical movement. <br /></td></tr>
 <tr class="memitem:ab0780e89786ba74cec74873f6764e322" id="r_ab0780e89786ba74cec74873f6764e322"><td class="memItemLeft"><a id="ab0780e89786ba74cec74873f6764e322" name="ab0780e89786ba74cec74873f6764e322"></a>
 <a class="el" href="classchannel_1_1error__accumulator.html">error_accumulator</a>&#160;</td><td class="memItemRight"><b>_error</b></td></tr>
 <tr class="memdesc:ab0780e89786ba74cec74873f6764e322"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error accrued reaching this state. <br /></td></tr>
-<tr class="memitem:abf354b73e6c6cf1bc4640ac26ef2bf13" id="r_abf354b73e6c6cf1bc4640ac26ef2bf13"><td class="memItemLeft"><a id="abf354b73e6c6cf1bc4640ac26ef2bf13" name="abf354b73e6c6cf1bc4640ac26ef2bf13"></a>
-<a class="el" href="structchannel_1_1point.html">point</a>&#160;</td><td class="memItemRight"><b>_move</b></td></tr>
-<tr class="memdesc:abf354b73e6c6cf1bc4640ac26ef2bf13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Direction of movement. <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>An iterator that generates the integral points nearest to the ideal ray. </p>
 <p>The ideal ray is defined by its initial coordinates, the delta vector (magnitude), and the movement vector (direction). Because it is a ray, it does not have a built-in terminal point. </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a799eb41624f6ddf413a3a3a464b12e88" name="a799eb41624f6ddf413a3a3a464b12e88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a799eb41624f6ddf413a3a3a464b12e88">&#9670;&#160;</a></span>iterator() <span class="overload">[1/2]</span></h2>
+<a id="ac37046d504912cd66dce10d8b0db0770" name="ac37046d504912cd66dce10d8b0db0770"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac37046d504912cd66dce10d8b0db0770">&#9670;&#160;</a></span>iterator() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -143,17 +143,27 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">channel::ranges::thin_line_view::iterator::iterator </td>
           <td>(</td>
-          <td class="paramtype">auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>current</em></span>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classchannel_1_1error__accumulator.html">error_accumulator</a></td>          <td class="paramname"><span class="paramname"><em>error</em></span>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>move</em></span>&#160;)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>sx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>sy</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classchannel_1_1error__accumulator.html">error_accumulator</a></td>          <td class="paramname"><span class="paramname"><em>error</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -166,17 +176,19 @@ Private Attributes</h2></td></tr>
 <p>Construct an iterator with an initial error. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">current</td><td>the starting point  </td></tr>
-    <tr><td class="paramname">error</td><td>the initial error  </td></tr>
-    <tr><td class="paramname">move</td><td>the direction in which to advance </td></tr>
+    <tr><td class="paramname">x</td><td>the x position of the iterator  </td></tr>
+    <tr><td class="paramname">y</td><td>the y position of the iterator  </td></tr>
+    <tr><td class="paramname">sx</td><td>the movement in the x direction  </td></tr>
+    <tr><td class="paramname">sy</td><td>the movement in the y direction  </td></tr>
+    <tr><td class="paramname">error</td><td>the error accumulator </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a486cbb5abe40d991157dc9e9ff8c4e80" name="a486cbb5abe40d991157dc9e9ff8c4e80"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a486cbb5abe40d991157dc9e9ff8c4e80">&#9670;&#160;</a></span>iterator() <span class="overload">[2/2]</span></h2>
+<a id="a1a02ff49416908468c863f55c1ca0539" name="a1a02ff49416908468c863f55c1ca0539"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a02ff49416908468c863f55c1ca0539">&#9670;&#160;</a></span>iterator() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -187,17 +199,32 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">channel::ranges::thin_line_view::iterator::iterator </td>
           <td>(</td>
-          <td class="paramtype">auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>current</em></span>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>delta</em></span>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>move</em></span>&#160;)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>dx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>dy</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>sx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>sy</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -210,9 +237,12 @@ Private Attributes</h2></td></tr>
 <p>Construct an iterator with a delta. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">current</td><td>the starting point  </td></tr>
-    <tr><td class="paramname">delta</td><td>the absolute differences  </td></tr>
-    <tr><td class="paramname">move</td><td>the direction in which to advance </td></tr>
+    <tr><td class="paramname">x</td><td>the x position of the iterator  </td></tr>
+    <tr><td class="paramname">y</td><td>the y position of the iterator  </td></tr>
+    <tr><td class="paramname">dx</td><td>the absolute change in the x direction  </td></tr>
+    <tr><td class="paramname">dy</td><td>the absolute change in the y direction  </td></tr>
+    <tr><td class="paramname">sx</td><td>the movement in the x direction  </td></tr>
+    <tr><td class="paramname">sy</td><td>the movement in the y direction </td></tr>
   </table>
   </dd>
 </dl>

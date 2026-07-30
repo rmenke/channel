@@ -5,7 +5,6 @@ var annotated_dup =
         [ "thin_line_view", "classchannel_1_1ranges_1_1thin__line__view.html", "classchannel_1_1ranges_1_1thin__line__view" ],
         [ "thick_line_view", "classchannel_1_1ranges_1_1thick__line__view.html", "classchannel_1_1ranges_1_1thick__line__view" ]
       ] ],
-      [ "point", "structchannel_1_1point.html", "structchannel_1_1point" ],
       [ "error_accumulator", "classchannel_1_1error__accumulator.html", "classchannel_1_1error__accumulator" ]
     ] ]
 ];

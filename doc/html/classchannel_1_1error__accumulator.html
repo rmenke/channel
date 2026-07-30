@@ -34,7 +34,7 @@ mermaid.initialize({ startOnLoad: true, theme: theme });
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">channel<span id="projectnumber">&#160;1.0.0</span>
+   <div id="projectname">channel<span id="projectnumber">&#160;1.0.1</span>
    </div>
    <div id="projectbrief">Bresenham-Murphy algorithm in C++</div>
   </td>
@@ -106,8 +106,6 @@ constexpr&#160;</td><td class="memItemRight"><b>error_accumulator</b> (error_acc
 <tr class="memdesc:ad98299320e82349043f10afa2376f0fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move constructor. <br /></td></tr>
 <tr class="memitem:a8a26436d8d562f3eaf2777a712d2905f" id="r_a8a26436d8d562f3eaf2777a712d2905f"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#a8a26436d8d562f3eaf2777a712d2905f">error_accumulator</a> (auto &amp;&amp;dx, auto &amp;&amp;dy)</td></tr>
 <tr class="memdesc:a8a26436d8d562f3eaf2777a712d2905f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accumulator constructor.  <br /></td></tr>
-<tr class="memitem:a87645a07db67ab21c3d31aa0164104da" id="r_a87645a07db67ab21c3d31aa0164104da"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#a87645a07db67ab21c3d31aa0164104da">error_accumulator</a> (<a class="el" href="structchannel_1_1point.html">point</a> delta)</td></tr>
-<tr class="memdesc:a87645a07db67ab21c3d31aa0164104da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accumulator constructor.  <br /></td></tr>
 <tr class="memitem:a6f945609819e5c837d52617402175dca" id="r_a6f945609819e5c837d52617402175dca"><td class="memItemLeft"><a id="a6f945609819e5c837d52617402175dca" name="a6f945609819e5c837d52617402175dca"></a>
 constexpr <a class="el" href="#aea8e2a26b27a4a976c5726d52743e333">error_accumulator</a> &amp;&#160;</td><td class="memItemRight"><b>operator=</b> (<a class="el" href="#aea8e2a26b27a4a976c5726d52743e333">error_accumulator</a> const &amp;) noexcept=default</td></tr>
 <tr class="memdesc:a6f945609819e5c837d52617402175dca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy assignment operator. <br /></td></tr>
@@ -139,7 +137,7 @@ int&#160;</td><td class="memItemRight"><b>_error</b></td></tr>
 <a href="https://zingl.github.io/Bresenham.pdf">https://zingl.github.io/Bresenham.pdf</a> </dd></dl>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8a26436d8d562f3eaf2777a712d2905f" name="a8a26436d8d562f3eaf2777a712d2905f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a26436d8d562f3eaf2777a712d2905f">&#9670;&#160;</a></span>error_accumulator() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a26436d8d562f3eaf2777a712d2905f">&#9670;&#160;</a></span>error_accumulator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -170,39 +168,6 @@ int&#160;</td><td class="memItemRight"><b>_error</b></td></tr>
   <table class="params">
     <tr><td class="paramname">dx</td><td>the absolute change in the x value  </td></tr>
     <tr><td class="paramname">dy</td><td>the absolute change in the y value </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a87645a07db67ab21c3d31aa0164104da" name="a87645a07db67ab21c3d31aa0164104da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a87645a07db67ab21c3d31aa0164104da">&#9670;&#160;</a></span>error_accumulator() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">channel::error_accumulator::error_accumulator </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structchannel_1_1point.html">point</a></td>          <td class="paramname"><span class="paramname"><em>delta</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel constexpr">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Accumulator constructor. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">delta</td><td>the magnitude of change in both directions </td></tr>
   </table>
   </dd>
 </dl>

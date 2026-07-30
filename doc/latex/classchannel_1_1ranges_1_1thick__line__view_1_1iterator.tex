@@ -26,13 +26,13 @@ iterator \& {\bfseries operator++} ()
 \Hypertarget{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_a5ba2ee026025c820a4700813a24965b3}\label{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_a5ba2ee026025c820a4700813a24965b3} 
 iterator {\bfseries operator++} (int)
 \begin{DoxyCompactList}\small\item\em Postincrement operator. \end{DoxyCompactList}\item 
-\Hypertarget{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_ad46248a64bf845bb306e4aa7fe6c9e73}\label{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_ad46248a64bf845bb306e4aa7fe6c9e73} 
-bool {\bfseries operator==} (const iterator \&rhs) const noexcept=default
+\Hypertarget{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_a154eb65256729364ee47e7c57cb963bc}\label{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_a154eb65256729364ee47e7c57cb963bc} 
+bool {\bfseries operator==} (const iterator \&rhs) const noexcept
 \begin{DoxyCompactList}\small\item\em Equality operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static iterator \doxymbox{\hyperlink{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_ac659de5cdef6d65c4d3c9f2d7e474816}{create}} (\doxymbox{\hyperlink{structchannel_1_1point}{point}} const \&current, \doxymbox{\hyperlink{structchannel_1_1point}{point}} const \&delta, \doxymbox{\hyperlink{structchannel_1_1point}{point}} const \&move, unsigned int r2)
+static iterator \doxymbox{\hyperlink{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_adf04cc636b6e94ef51546da506c0ead8}{create}} (int x, int y, int dx, int dy, int sx, int sy, unsigned int r2)
 \begin{DoxyCompactList}\small\item\em Factory method to produce an iterator. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -63,11 +63,11 @@ Construct a thick iterator from a set of thin iterators.
 \label{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_doc-func-members}
 \Hypertarget{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_doc-func-members}
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_ac659de5cdef6d65c4d3c9f2d7e474816}\index{channel::ranges::thick\_line\_view::iterator@{channel::ranges::thick\_line\_view::iterator}!create@{create}}
+\Hypertarget{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_adf04cc636b6e94ef51546da506c0ead8}\index{channel::ranges::thick\_line\_view::iterator@{channel::ranges::thick\_line\_view::iterator}!create@{create}}
 \index{create@{create}!channel::ranges::thick\_line\_view::iterator@{channel::ranges::thick\_line\_view::iterator}}
 \doxysubsubsection{\texorpdfstring{create()}{create()}}
-{\footnotesize\ttfamily \label{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_ac659de5cdef6d65c4d3c9f2d7e474816} 
-\doxymbox{\hyperlink{classchannel_1_1ranges_1_1thick__line__view_1_1iterator}{thick\+\_\+line\+\_\+view::\+iterator}} channel::\+ranges::\+thick\+\_\+line\+\_\+view::\+iterator::\+create (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structchannel_1_1point}{point}} const \&}]{current}{, }\item[{\doxymbox{\hyperlink{structchannel_1_1point}{point}} const \&}]{delta}{, }\item[{\doxymbox{\hyperlink{structchannel_1_1point}{point}} const \&}]{move}{, }\item[{unsigned int}]{r2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+{\footnotesize\ttfamily \label{classchannel_1_1ranges_1_1thick__line__view_1_1iterator_adf04cc636b6e94ef51546da506c0ead8} 
+\doxymbox{\hyperlink{classchannel_1_1ranges_1_1thick__line__view_1_1iterator}{thick\+\_\+line\+\_\+view::\+iterator}} channel::\+ranges::\+thick\+\_\+line\+\_\+view::\+iterator::\+create (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{int}]{dx}{, }\item[{int}]{dy}{, }\item[{int}]{sx}{, }\item[{int}]{sy}{, }\item[{unsigned int}]{r2}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
 
 
@@ -75,11 +75,17 @@ Factory method to produce an iterator.
 
 
 \begin{DoxyParams}{Parameters}
-{\em current} & the current position of the iterator  \\
+{\em x} & the current x position of the iterator  \\
 \hline
-{\em delta} & the absolute change of position  \\
+{\em y} & the current y position of the iterator  \\
 \hline
-{\em move} & the direction of movement  \\
+{\em dx} & the absolute change in z  \\
+\hline
+{\em dy} & the absolute change in y  \\
+\hline
+{\em sx} & the direction of horizontal movement  \\
+\hline
+{\em sy} & the direction of vertical movement  \\
 \hline
 {\em r2} & the square of the radius \\
 \hline

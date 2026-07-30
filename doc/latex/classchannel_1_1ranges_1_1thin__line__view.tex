@@ -9,16 +9,6 @@ The classic Bresenham algorithm as a range factory.
 
 {\ttfamily \+\#include $<$channel.\+hpp$>$}
 
-
-
-Collaboration diagram for channel::\+ranges::\+thin\+\_\+line\+\_\+view:\+
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=189pt]{classchannel_1_1ranges_1_1thin__line__view__coll__graph}
-\end{center}
-\end{figure}
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -27,7 +17,7 @@ class \doxymbox{\hyperlink{classchannel_1_1ranges_1_1thin__line__view_1_1iterato
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-constexpr \doxymbox{\hyperlink{classchannel_1_1ranges_1_1thin__line__view_a5438562d1206596906b2eb96e063793e}{thin\+\_\+line\+\_\+view}} (auto \&\&p0, auto \&\&p1)
+constexpr \doxymbox{\hyperlink{classchannel_1_1ranges_1_1thin__line__view_a6916aad4183205009a3f4b92699d08f3}{thin\+\_\+line\+\_\+view}} (int x0, int y0, int x1, int y1) noexcept
 \begin{DoxyCompactList}\small\item\em Construct a thin line between two endpoints. \end{DoxyCompactList}\item 
 \Hypertarget{classchannel_1_1ranges_1_1thin__line__view_a6fafca97b520e44656b0460578b7b152}\label{classchannel_1_1ranges_1_1thin__line__view_a6fafca97b520e44656b0460578b7b152} 
 constexpr \doxymbox{\hyperlink{classchannel_1_1ranges_1_1thin__line__view_1_1iterator}{iterator}} {\bfseries begin} () const
@@ -38,18 +28,24 @@ constexpr \doxymbox{\hyperlink{classchannel_1_1ranges_1_1thin__line__view_1_1ite
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_a4792f23c745fe0b567ff409a2ede3187}\label{classchannel_1_1ranges_1_1thin__line__view_a4792f23c745fe0b567ff409a2ede3187} 
-\doxymbox{\hyperlink{structchannel_1_1point}{point}} {\bfseries \+\_\+p0}
+\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_a241302bacac17d12b0f9a02b17bc432a}\label{classchannel_1_1ranges_1_1thin__line__view_a241302bacac17d12b0f9a02b17bc432a} 
+int {\bfseries \+\_\+y0}
 \begin{DoxyCompactList}\small\item\em The starting point. \end{DoxyCompactList}\item 
-\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_a66a188381c4721ee903e7c8633bbeb93}\label{classchannel_1_1ranges_1_1thin__line__view_a66a188381c4721ee903e7c8633bbeb93} 
-\doxymbox{\hyperlink{structchannel_1_1point}{point}} {\bfseries \+\_\+p1}
+\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_a41fc59cbbd4835bbe580e352a66b2e5d}\label{classchannel_1_1ranges_1_1thin__line__view_a41fc59cbbd4835bbe580e352a66b2e5d} 
+int {\bfseries \+\_\+y1}
 \begin{DoxyCompactList}\small\item\em The finishing point. \end{DoxyCompactList}\item 
-\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_ab08a47af877a4de9d5d4cff4c26d9d32}\label{classchannel_1_1ranges_1_1thin__line__view_ab08a47af877a4de9d5d4cff4c26d9d32} 
-\doxymbox{\hyperlink{structchannel_1_1point}{point}} {\bfseries \+\_\+delta}
-\begin{DoxyCompactList}\small\item\em The absolute difference between the endpoints. \end{DoxyCompactList}\item 
-\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_ae8ddf3215231c40ca7f397595a1f9d97}\label{classchannel_1_1ranges_1_1thin__line__view_ae8ddf3215231c40ca7f397595a1f9d97} 
-\doxymbox{\hyperlink{structchannel_1_1point}{point}} {\bfseries \+\_\+move}
-\begin{DoxyCompactList}\small\item\em The direction of movement along the axes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_a397234c6cc652679fb79ebcab949fe13}\label{classchannel_1_1ranges_1_1thin__line__view_a397234c6cc652679fb79ebcab949fe13} 
+int {\bfseries \+\_\+dx} = std::\+abs(\+\_\+x1 -\/ \+\_\+x0)
+\begin{DoxyCompactList}\small\item\em Absolute change in x. \end{DoxyCompactList}\item 
+\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_a465c434999fe6b6528a4a649f168a9d9}\label{classchannel_1_1ranges_1_1thin__line__view_a465c434999fe6b6528a4a649f168a9d9} 
+int {\bfseries \+\_\+dy} = std::\+abs(\doxymbox{\hyperlink{classchannel_1_1ranges_1_1thin__line__view_a41fc59cbbd4835bbe580e352a66b2e5d}{\+\_\+y1}} -\/ \doxymbox{\hyperlink{classchannel_1_1ranges_1_1thin__line__view_a241302bacac17d12b0f9a02b17bc432a}{\+\_\+y0}})
+\begin{DoxyCompactList}\small\item\em Absolute change in y. \end{DoxyCompactList}\item 
+\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_ad39ad127ffee43ed1cda961a395d0aee}\label{classchannel_1_1ranges_1_1thin__line__view_ad39ad127ffee43ed1cda961a395d0aee} 
+int {\bfseries \+\_\+sx} = \+\_\+x1 $>$ \+\_\+x0 ? +1 :\+ -\/1
+\begin{DoxyCompactList}\small\item\em Direction of x movement. \end{DoxyCompactList}\item 
+\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_a47e0ab02e5d24c9f881766b4afbef54b}\label{classchannel_1_1ranges_1_1thin__line__view_a47e0ab02e5d24c9f881766b4afbef54b} 
+int {\bfseries \+\_\+sy} = \doxymbox{\hyperlink{classchannel_1_1ranges_1_1thin__line__view_a41fc59cbbd4835bbe580e352a66b2e5d}{\+\_\+y1}} $>$ \doxymbox{\hyperlink{classchannel_1_1ranges_1_1thin__line__view_a241302bacac17d12b0f9a02b17bc432a}{\+\_\+y0}} ? +1 :\+ -\/1
+\begin{DoxyCompactList}\small\item\em Direction of y movement. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -60,24 +56,17 @@ Bresenham\textquotesingle{}s algorithm maintains an error term that indicates ho
 \label{classchannel_1_1ranges_1_1thin__line__view_doc-constructors}
 \Hypertarget{classchannel_1_1ranges_1_1thin__line__view_doc-constructors}
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_a5438562d1206596906b2eb96e063793e}\index{channel::ranges::thin\_line\_view@{channel::ranges::thin\_line\_view}!thin\_line\_view@{thin\_line\_view}}
+\Hypertarget{classchannel_1_1ranges_1_1thin__line__view_a6916aad4183205009a3f4b92699d08f3}\index{channel::ranges::thin\_line\_view@{channel::ranges::thin\_line\_view}!thin\_line\_view@{thin\_line\_view}}
 \index{thin\_line\_view@{thin\_line\_view}!channel::ranges::thin\_line\_view@{channel::ranges::thin\_line\_view}}
 \doxysubsubsection{\texorpdfstring{thin\_line\_view()}{thin\_line\_view()}}
-{\footnotesize\ttfamily \label{classchannel_1_1ranges_1_1thin__line__view_a5438562d1206596906b2eb96e063793e} 
-channel::\+ranges::\+thin\+\_\+line\+\_\+view::\+thin\+\_\+line\+\_\+view (\begin{DoxyParamCaption}\item[{auto \&\&}]{p0}{, }\item[{auto \&\&}]{p1}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+{\footnotesize\ttfamily \label{classchannel_1_1ranges_1_1thin__line__view_a6916aad4183205009a3f4b92699d08f3} 
+channel::\+ranges::\+thin\+\_\+line\+\_\+view::\+thin\+\_\+line\+\_\+view (\begin{DoxyParamCaption}\item[{int}]{x0}{, }\item[{int}]{y0}{, }\item[{int}]{x1}{, }\item[{int}]{y1}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}, {\ttfamily [noexcept]}}
 
 
 
 Construct a thin line between two endpoints. 
 
 The result will contain only the first endpoint. 
-\begin{DoxyParams}{Parameters}
-{\em p0} & the starting point  \\
-\hline
-{\em p1} & the ending point \\
-\hline
-\end{DoxyParams}
-
 
 The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
 \item 

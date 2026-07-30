@@ -34,7 +34,7 @@ mermaid.initialize({ startOnLoad: true, theme: theme });
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">channel<span id="projectnumber">&#160;1.0.0</span>
+   <div id="projectname">channel<span id="projectnumber">&#160;1.0.1</span>
    </div>
    <div id="projectbrief">Bresenham-Murphy algorithm in C++</div>
   </td>
@@ -105,14 +105,14 @@ iterator &amp;&#160;</td><td class="memItemRight"><b>operator++</b> ()</td></tr>
 <tr class="memitem:a5ba2ee026025c820a4700813a24965b3" id="r_a5ba2ee026025c820a4700813a24965b3"><td class="memItemLeft"><a id="a5ba2ee026025c820a4700813a24965b3" name="a5ba2ee026025c820a4700813a24965b3"></a>
 iterator&#160;</td><td class="memItemRight"><b>operator++</b> (int)</td></tr>
 <tr class="memdesc:a5ba2ee026025c820a4700813a24965b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Postincrement operator. <br /></td></tr>
-<tr class="memitem:ad46248a64bf845bb306e4aa7fe6c9e73" id="r_ad46248a64bf845bb306e4aa7fe6c9e73"><td class="memItemLeft"><a id="ad46248a64bf845bb306e4aa7fe6c9e73" name="ad46248a64bf845bb306e4aa7fe6c9e73"></a>
-bool&#160;</td><td class="memItemRight"><b>operator==</b> (const iterator &amp;rhs) const noexcept=default</td></tr>
-<tr class="memdesc:ad46248a64bf845bb306e4aa7fe6c9e73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equality operator. <br /></td></tr>
+<tr class="memitem:a154eb65256729364ee47e7c57cb963bc" id="r_a154eb65256729364ee47e7c57cb963bc"><td class="memItemLeft"><a id="a154eb65256729364ee47e7c57cb963bc" name="a154eb65256729364ee47e7c57cb963bc"></a>
+bool&#160;</td><td class="memItemRight"><b>operator==</b> (const iterator &amp;rhs) const noexcept</td></tr>
+<tr class="memdesc:a154eb65256729364ee47e7c57cb963bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equality operator. <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ac659de5cdef6d65c4d3c9f2d7e474816" id="r_ac659de5cdef6d65c4d3c9f2d7e474816"><td class="memItemLeft">static iterator&#160;</td><td class="memItemRight"><a class="el" href="#ac659de5cdef6d65c4d3c9f2d7e474816">create</a> (<a class="el" href="structchannel_1_1point.html">point</a> const &amp;current, <a class="el" href="structchannel_1_1point.html">point</a> const &amp;delta, <a class="el" href="structchannel_1_1point.html">point</a> const &amp;move, unsigned int r2)</td></tr>
-<tr class="memdesc:ac659de5cdef6d65c4d3c9f2d7e474816"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory method to produce an iterator.  <br /></td></tr>
+<tr class="memitem:adf04cc636b6e94ef51546da506c0ead8" id="r_adf04cc636b6e94ef51546da506c0ead8"><td class="memItemLeft">static iterator&#160;</td><td class="memItemRight"><a class="el" href="#adf04cc636b6e94ef51546da506c0ead8">create</a> (int x, int y, int dx, int dy, int sx, int sy, unsigned int r2)</td></tr>
+<tr class="memdesc:adf04cc636b6e94ef51546da506c0ead8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory method to produce an iterator.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>An iterator that manages multiple thin iterators in tandem. </p>
@@ -153,8 +153,8 @@ template&lt;std::ranges::range Range&gt; </div>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="ac659de5cdef6d65c4d3c9f2d7e474816" name="ac659de5cdef6d65c4d3c9f2d7e474816"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac659de5cdef6d65c4d3c9f2d7e474816">&#9670;&#160;</a></span>create()</h2>
+<a id="adf04cc636b6e94ef51546da506c0ead8" name="adf04cc636b6e94ef51546da506c0ead8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf04cc636b6e94ef51546da506c0ead8">&#9670;&#160;</a></span>create()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -165,17 +165,32 @@ template&lt;std::ranges::range Range&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classchannel_1_1ranges_1_1thick__line__view_1_1iterator.html">thick_line_view::iterator</a> channel::ranges::thick_line_view::iterator::create </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structchannel_1_1point.html">point</a> const &amp;</td>          <td class="paramname"><span class="paramname"><em>current</em></span>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structchannel_1_1point.html">point</a> const &amp;</td>          <td class="paramname"><span class="paramname"><em>delta</em></span>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structchannel_1_1point.html">point</a> const &amp;</td>          <td class="paramname"><span class="paramname"><em>move</em></span>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>dx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>dy</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>sx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>sy</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -193,9 +208,12 @@ template&lt;std::ranges::range Range&gt; </div>
 <p>Factory method to produce an iterator. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">current</td><td>the current position of the iterator  </td></tr>
-    <tr><td class="paramname">delta</td><td>the absolute change of position  </td></tr>
-    <tr><td class="paramname">move</td><td>the direction of movement  </td></tr>
+    <tr><td class="paramname">x</td><td>the current x position of the iterator  </td></tr>
+    <tr><td class="paramname">y</td><td>the current y position of the iterator  </td></tr>
+    <tr><td class="paramname">dx</td><td>the absolute change in z  </td></tr>
+    <tr><td class="paramname">dy</td><td>the absolute change in y  </td></tr>
+    <tr><td class="paramname">sx</td><td>the direction of horizontal movement  </td></tr>
+    <tr><td class="paramname">sy</td><td>the direction of vertical movement  </td></tr>
     <tr><td class="paramname">r2</td><td>the square of the radius </td></tr>
   </table>
   </dd>

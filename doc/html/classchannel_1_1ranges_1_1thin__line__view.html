@@ -34,7 +34,7 @@ mermaid.initialize({ startOnLoad: true, theme: theme });
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">channel<span id="projectnumber">&#160;1.0.0</span>
+   <div id="projectname">channel<span id="projectnumber">&#160;1.0.1</span>
    </div>
    <div id="projectbrief">Bresenham-Murphy algorithm in C++</div>
   </td>
@@ -87,11 +87,6 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('classchannel_1
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="channel_8hpp_source.html">channel.hpp</a>&gt;</code></p>
-<div class="dynheader">
-Collaboration diagram for channel::ranges::thin_line_view:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="classchannel_1_1ranges_1_1thin__line__view__coll__graph.svg" width="156" height="198"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -100,8 +95,8 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5438562d1206596906b2eb96e063793e" id="r_a5438562d1206596906b2eb96e063793e"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#a5438562d1206596906b2eb96e063793e">thin_line_view</a> (auto &amp;&amp;p0, auto &amp;&amp;p1)</td></tr>
-<tr class="memdesc:a5438562d1206596906b2eb96e063793e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a thin line between two endpoints.  <br /></td></tr>
+<tr class="memitem:a6916aad4183205009a3f4b92699d08f3" id="r_a6916aad4183205009a3f4b92699d08f3"><td class="memItemLeft">constexpr&#160;</td><td class="memItemRight"><a class="el" href="#a6916aad4183205009a3f4b92699d08f3">thin_line_view</a> (int x0, int y0, int x1, int y1) noexcept</td></tr>
+<tr class="memdesc:a6916aad4183205009a3f4b92699d08f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a thin line between two endpoints.  <br /></td></tr>
 <tr class="memitem:a6fafca97b520e44656b0460578b7b152" id="r_a6fafca97b520e44656b0460578b7b152"><td class="memItemLeft"><a id="a6fafca97b520e44656b0460578b7b152" name="a6fafca97b520e44656b0460578b7b152"></a>
 constexpr <a class="el" href="classchannel_1_1ranges_1_1thin__line__view_1_1iterator.html">iterator</a>&#160;</td><td class="memItemRight"><b>begin</b> () const</td></tr>
 <tr class="memdesc:a6fafca97b520e44656b0460578b7b152"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an iterator that is positioned at the starting coordinates. <br /></td></tr>
@@ -111,25 +106,31 @@ constexpr <a class="el" href="classchannel_1_1ranges_1_1thin__line__view_1_1iter
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a4792f23c745fe0b567ff409a2ede3187" id="r_a4792f23c745fe0b567ff409a2ede3187"><td class="memItemLeft"><a id="a4792f23c745fe0b567ff409a2ede3187" name="a4792f23c745fe0b567ff409a2ede3187"></a>
-<a class="el" href="structchannel_1_1point.html">point</a>&#160;</td><td class="memItemRight"><b>_p0</b></td></tr>
-<tr class="memdesc:a4792f23c745fe0b567ff409a2ede3187"><td class="mdescLeft">&#160;</td><td class="mdescRight">The starting point. <br /></td></tr>
-<tr class="memitem:a66a188381c4721ee903e7c8633bbeb93" id="r_a66a188381c4721ee903e7c8633bbeb93"><td class="memItemLeft"><a id="a66a188381c4721ee903e7c8633bbeb93" name="a66a188381c4721ee903e7c8633bbeb93"></a>
-<a class="el" href="structchannel_1_1point.html">point</a>&#160;</td><td class="memItemRight"><b>_p1</b></td></tr>
-<tr class="memdesc:a66a188381c4721ee903e7c8633bbeb93"><td class="mdescLeft">&#160;</td><td class="mdescRight">The finishing point. <br /></td></tr>
-<tr class="memitem:ab08a47af877a4de9d5d4cff4c26d9d32" id="r_ab08a47af877a4de9d5d4cff4c26d9d32"><td class="memItemLeft"><a id="ab08a47af877a4de9d5d4cff4c26d9d32" name="ab08a47af877a4de9d5d4cff4c26d9d32"></a>
-<a class="el" href="structchannel_1_1point.html">point</a>&#160;</td><td class="memItemRight"><b>_delta</b></td></tr>
-<tr class="memdesc:ab08a47af877a4de9d5d4cff4c26d9d32"><td class="mdescLeft">&#160;</td><td class="mdescRight">The absolute difference between the endpoints. <br /></td></tr>
-<tr class="memitem:ae8ddf3215231c40ca7f397595a1f9d97" id="r_ae8ddf3215231c40ca7f397595a1f9d97"><td class="memItemLeft"><a id="ae8ddf3215231c40ca7f397595a1f9d97" name="ae8ddf3215231c40ca7f397595a1f9d97"></a>
-<a class="el" href="structchannel_1_1point.html">point</a>&#160;</td><td class="memItemRight"><b>_move</b></td></tr>
-<tr class="memdesc:ae8ddf3215231c40ca7f397595a1f9d97"><td class="mdescLeft">&#160;</td><td class="mdescRight">The direction of movement along the axes. <br /></td></tr>
+<tr class="memitem:a241302bacac17d12b0f9a02b17bc432a" id="r_a241302bacac17d12b0f9a02b17bc432a"><td class="memItemLeft"><a id="a241302bacac17d12b0f9a02b17bc432a" name="a241302bacac17d12b0f9a02b17bc432a"></a>
+int&#160;</td><td class="memItemRight"><b>_y0</b></td></tr>
+<tr class="memdesc:a241302bacac17d12b0f9a02b17bc432a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The starting point. <br /></td></tr>
+<tr class="memitem:a41fc59cbbd4835bbe580e352a66b2e5d" id="r_a41fc59cbbd4835bbe580e352a66b2e5d"><td class="memItemLeft"><a id="a41fc59cbbd4835bbe580e352a66b2e5d" name="a41fc59cbbd4835bbe580e352a66b2e5d"></a>
+int&#160;</td><td class="memItemRight"><b>_y1</b></td></tr>
+<tr class="memdesc:a41fc59cbbd4835bbe580e352a66b2e5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The finishing point. <br /></td></tr>
+<tr class="memitem:a397234c6cc652679fb79ebcab949fe13" id="r_a397234c6cc652679fb79ebcab949fe13"><td class="memItemLeft"><a id="a397234c6cc652679fb79ebcab949fe13" name="a397234c6cc652679fb79ebcab949fe13"></a>
+int&#160;</td><td class="memItemRight"><b>_dx</b> = std::abs(_x1 - _x0)</td></tr>
+<tr class="memdesc:a397234c6cc652679fb79ebcab949fe13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Absolute change in x. <br /></td></tr>
+<tr class="memitem:a465c434999fe6b6528a4a649f168a9d9" id="r_a465c434999fe6b6528a4a649f168a9d9"><td class="memItemLeft"><a id="a465c434999fe6b6528a4a649f168a9d9" name="a465c434999fe6b6528a4a649f168a9d9"></a>
+int&#160;</td><td class="memItemRight"><b>_dy</b> = std::abs(<a class="el" href="#a41fc59cbbd4835bbe580e352a66b2e5d">_y1</a> - <a class="el" href="#a241302bacac17d12b0f9a02b17bc432a">_y0</a>)</td></tr>
+<tr class="memdesc:a465c434999fe6b6528a4a649f168a9d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Absolute change in y. <br /></td></tr>
+<tr class="memitem:ad39ad127ffee43ed1cda961a395d0aee" id="r_ad39ad127ffee43ed1cda961a395d0aee"><td class="memItemLeft"><a id="ad39ad127ffee43ed1cda961a395d0aee" name="ad39ad127ffee43ed1cda961a395d0aee"></a>
+int&#160;</td><td class="memItemRight"><b>_sx</b> = _x1 &gt; _x0 ? +1 : -1</td></tr>
+<tr class="memdesc:ad39ad127ffee43ed1cda961a395d0aee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Direction of x movement. <br /></td></tr>
+<tr class="memitem:a47e0ab02e5d24c9f881766b4afbef54b" id="r_a47e0ab02e5d24c9f881766b4afbef54b"><td class="memItemLeft"><a id="a47e0ab02e5d24c9f881766b4afbef54b" name="a47e0ab02e5d24c9f881766b4afbef54b"></a>
+int&#160;</td><td class="memItemRight"><b>_sy</b> = <a class="el" href="#a41fc59cbbd4835bbe580e352a66b2e5d">_y1</a> &gt; <a class="el" href="#a241302bacac17d12b0f9a02b17bc432a">_y0</a> ? +1 : -1</td></tr>
+<tr class="memdesc:a47e0ab02e5d24c9f881766b4afbef54b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Direction of y movement. <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The classic Bresenham algorithm as a range factory. </p>
 <p>Bresenham's algorithm maintains an error term that indicates how far the nearest integral pixel is to the ideal line. </p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a5438562d1206596906b2eb96e063793e" name="a5438562d1206596906b2eb96e063793e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5438562d1206596906b2eb96e063793e">&#9670;&#160;</a></span>thin_line_view()</h2>
+<a id="a6916aad4183205009a3f4b92699d08f3" name="a6916aad4183205009a3f4b92699d08f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6916aad4183205009a3f4b92699d08f3">&#9670;&#160;</a></span>thin_line_view()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -140,30 +141,33 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">channel::ranges::thin_line_view::thin_line_view </td>
           <td>(</td>
-          <td class="paramtype">auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>p0</em></span>, </td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x0</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">auto &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>p1</em></span>&#160;)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y0</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y1</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel constexpr">constexpr</span><span class="mlabel noexcept">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Construct a thin line between two endpoints. </p>
 <p>The result will contain only the first endpoint. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">p0</td><td>the starting point  </td></tr>
-    <tr><td class="paramname">p1</td><td>the ending point </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
