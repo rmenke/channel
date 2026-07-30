@@ -59,21 +59,24 @@ void test_random(std::filesystem::path output, auto &&urbg) {
             get<0>(delta) = std::abs(get<0>(p1) - get<0>(p0));
             get<1>(delta) = std::abs(get<1>(p1) - get<1>(p0));
 
-            thin_line_view c(p0, p1);
+            thin_line_view c(p0.first, p0.second, p1.first, p1.second);
 
-            auto expected_count =
-                std::max(get<0>(delta), get<1>(delta));
+            auto expected_count = std::max(get<0>(delta), get<1>(delta));
 
             // ensure that the point set is not infinite, or the distance()
             // operator won't halt.
             auto points = c | std::views::take(2 * expected_count);
 
-            eq(expected_count, std::ranges::distance(points), "expected distance");
+            eq(expected_count, std::ranges::distance(points),
+               "expected distance");
 
             auto b = c.begin(), e = c.end();
 
-            eq(*b, p0, "first");
-            eq(*e, p1, "last");
+            auto [bx, by] = *b;
+            auto [ex, ey] = *e;
+
+            eq(std::pair{bx, by}, std::pair{p0.first, p0.second}, "first");
+            eq(std::pair{ex, ey}, std::pair{p1.first, p1.second}, "last");
 
             bool monotonic = true;
 
@@ -145,16 +148,17 @@ void test_radial(std::filesystem::path output) {
 }
 
 void test_degenerate() {
-    channel::ranges::thin_line_view t(std::pair{25, 73}, std::pair{25, 73});
+    channel::ranges::thin_line_view t(25, 73, 25, 73);
 
     ok(std::ranges::empty(t), "degenerate range empty");
 
     auto b = t.begin();
     auto e = t.end();
 
-    eq(b, e, "begin() == end()");
-    eq(*e, channel::point{25, 73}, "iterator valid");
-    eq(e, ++b, "increment does not change iterator");
+    ok(b == e, "begin() == end()");
+
+    eq(std::tuple{e->first, e->second}, std::tuple{25, 73}, "iterator valid");
+    ok(e == ++b, "increment does not change iterator");
 }
 
 int main(int argc, char **argv) {

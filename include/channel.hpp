@@ -1,11 +1,11 @@
 #ifndef _channel_hpp_
 #define _channel_hpp_
 
+#include <algorithm>
 #include <cassert>
 #include <cmath>
 #include <functional>
 #include <iterator>
-#include <ostream>
 #include <ranges>
 #include <utility>
 #include <vector>
@@ -13,81 +13,6 @@
 /// @brief Classes for the generation of pixelated lines.
 
 namespace channel {
-
-/// @brief A 2-D coordinate pair.
-///
-/// While it would have been possible for point to be implemented as a
-/// @c std::pair<int,int> class, it made the introduction of operators
-/// working with the values difficult.
-
-struct point {
-    int x; ///< The x-coordinate.
-    int y; ///< The y-coordinate.
-
-    /// @brief Default constructor.
-    constexpr point() noexcept {}
-
-    /// @brief Construct a point from two coordinates.
-    constexpr point(int x, int y) noexcept
-        : x(x)
-        , y(y) {}
-
-    /// @brief Construct a point from any type that is bindable.
-    constexpr point(auto &&pt) {
-        auto &&[x0, y0] = std::forward<decltype(pt)>(pt);
-        x = x0, y = y0;
-    }
-
-    /// @brief Convert a @c point object into a @c std::pair object.
-    constexpr operator std::pair<int, int>() const noexcept {
-        return {x, y};
-    }
-
-    /// @brief Equality operator.
-    constexpr bool operator==(point const &) const noexcept = default;
-
-    /// @brief Vector addition.
-    constexpr point operator+(point const &rhs) const noexcept {
-        return {x + rhs.x, y + rhs.y};
-    }
-
-    /// @brief Vector subtraction.
-    constexpr point operator-(point const &rhs) const noexcept {
-        return {x - rhs.x, y - rhs.y};
-    }
-
-    /// @brief Vector negation.
-    constexpr point operator-() const noexcept {
-        return {-x, -y};
-    }
-
-    /// @brief Multiply the vector by an integral value.
-    constexpr point &operator*=(std::integral auto &&t) noexcept {
-        x *= t, y *= t;
-        return *this;
-    }
-
-    /// @brief Calculate the square of the euclidean length.
-    constexpr std::size_t length_squared() const noexcept {
-        return x * x + y * y;
-    }
-
-    /// @brief Output the point as an ordered pair.
-    friend std::ostream &operator<<(std::ostream &os, point const &pt) {
-        return os << "(" << pt.x << ", " << pt.y << ")";
-    }
-};
-
-constexpr point abs(point const &p) noexcept {
-    return {std::abs(p.x), std::abs(p.y)};
-}
-
-constexpr int sgn(int x) noexcept {
-    return x > 0 ? +1 : x < 0 ? -1 : 0;
-}
-constexpr point sgn(point const &p) noexcept {
-    return {sgn(p.x), sgn(p.y)};
-}
 
 /// @brief The Bresenham error accumulator.
 ///
@@ -143,12 +68,6 @@ class error_accumulator {
         , _dy(dy)
         , _error(dx - dy) {}
 
-    /// @brief Accumulator constructor.
-    constexpr error_accumulator(
-        point delta ///< the magnitude of change in both directions
-    )
-        : error_accumulator(delta.x, delta.y) {}
-
     constexpr ~error_accumulator() = default;
 
     /// @brief Copy assignment operator.
@@ -187,12 +106,6 @@ class error_accumulator {
 
         return result;
     }
-
-    friend std::ostream &
-    operator<<(std::ostream &os, error_accumulator const &e) {
-        return os << "{(" << e._dx << ", " << e._dy
-                  << "), error=" << e._error << "}";
-    }
 };
 
 /// @brief Range factories.
@@ -204,24 +117,24 @@ namespace ranges {
 /// far the nearest integral pixel is to the ideal line.
 
 class thin_line_view : public std::ranges::view_interface<thin_line_view> {
-    point _p0;    ///< The starting point.
-    point _p1;    ///< The finishing point.
-    point _delta; ///< The absolute difference between the endpoints.
-    point _move;  ///< The direction of movement along the axes.
+    int _x0, _y0; ///< The starting point.
+    int _x1, _y1; ///< The finishing point.
+
+    int _dx = std::abs(_x1 - _x0); ///< Absolute change in x.
+    int _dy = std::abs(_y1 - _y0); ///< Absolute change in y.
+    int _sx = _x1 > _x0 ? +1 : -1; ///< Direction of x movement.
+    int _sy = _y1 > _y0 ? +1 : -1; ///< Direction of y movement.
 
   public:
     /// @brief Construct a thin line between two endpoints.
     ///
     /// The result will contain only the first endpoint.
 
-    constexpr thin_line_view(
-        auto &&p0, ///< the starting point
-        auto &&p1  ///< the ending point
-    )
-        : _p0(std::forward<decltype(p0)>(p0))
-        , _p1(std::forward<decltype(p1)>(p1))
-        , _delta(abs(_p1 - _p0))
-        , _move(sgn(_p1 - _p0)) {}
+    constexpr thin_line_view(int x0, int y0, int x1, int y1) noexcept
+        : _x0(x0)
+        , _y0(y0)
+        , _x1(x1)
+        , _y1(y1) {}
 
     /// @brief An iterator that generates the integral points nearest to the
     /// ideal ray.
@@ -232,9 +145,14 @@ class thin_line_view : public std::ranges::view_interface<thin_line_view> {
     /// point.
 
     class iterator {
-        point _current;           ///< Current position of the iterator.
+        using point = std::pair<int, int>;
+
+        point _current; ///< Position of the iterator.
+
+        int _step_x; ///< Direction of horizontal movement.
+        int _step_y; ///< Direction of vertical movement.
+
         error_accumulator _error; ///< Error accrued reaching this state.
-        point _move;              ///< Direction of movement.
 
       public:
         using value_type = decltype(_current);
@@ -247,42 +165,44 @@ class thin_line_view : public std::ranges::view_interface<thin_line_view> {
 
         /// @brief Construct an iterator with an initial error.
         constexpr iterator(
-            auto &&current,          ///< the starting point
-            error_accumulator error, ///< the initial error
-            auto &&move              ///< the direction in which to advance
+            int x,                  ///< the x position of the iterator
+            int y,                  ///< the y position of the iterator
+            int sx,                 ///< the movement in the x direction
+            int sy,                 ///< the movement in the y direction
+            error_accumulator error ///< the error accumulator
         )
-            : _current(std::forward<decltype(current)>(current))
-            , _error(std::move(error))
-            , _move(std::forward<decltype(move)>(move)) {}
+            : _current(x, y)
+            , _step_x(sx)
+            , _step_y(sy)
+            , _error(error) {}
 
         /// @brief Construct an iterator with a delta.
         constexpr iterator(
-            auto &&current, ///< the starting point
-            auto &&delta,   ///< the absolute differences
-            auto &&move     ///< the direction in which to advance
+            int x,  ///< the x position of the iterator
+            int y,  ///< the y position of the iterator
+            int dx, ///< the absolute change in the x direction
+            int dy, ///< the absolute change in the y direction
+            int sx, ///< the movement in the x direction
+            int sy  ///< the movement in the y direction
         )
-            : iterator(
-                  std::forward<decltype(current)>(current),
-                  error_accumulator(std::forward<decltype(delta)>(delta)),
-                  std::forward<decltype(move)>(move)
-              ) {}
+            : iterator(x, y, sx, sy, error_accumulator(dx, dy)) {}
 
-        /// @brief Extract the current value from the iterator.
+        /// @brief The current value from the iterator.
         constexpr reference operator*() const noexcept {
             return _current;
         }
 
-        /// @brief Extract the current value from the iterator.
         constexpr pointer operator->() const noexcept {
             return &_current;
         }
 
         /// @brief Preincrement operator.
         constexpr iterator &operator++() {
+            auto &&[x, y] = _current;
             auto &&[move_x, move_y] = _error.update();
 
-            if (move_x) _current.x += _move.x;
-            if (move_y) _current.y += _move.y;
+            if (move_x) x += _step_x;
+            if (move_y) y += _step_y;
 
             return *this;
         }
@@ -296,26 +216,22 @@ class thin_line_view : public std::ranges::view_interface<thin_line_view> {
 
         /// @brief Equality operator.
         constexpr bool operator==(iterator const &rhs) const noexcept {
-            return _current == rhs._current;
-        }
-
-        friend std::ostream &
-        operator<<(std::ostream &os, const iterator &i) {
-            return os << "{current=" << i._current << ", error=" << i._error
-                      << ", move=" << i._move << "}";
+            auto &&[x, y] = _current;
+            auto &&[rx, ry] = rhs._current;
+            return x == rx && y == ry;
         }
     };
 
     /// @brief Create an iterator that is positioned at the starting
     /// coordinates.
     constexpr iterator begin() const {
-        return iterator(_p0, _delta, _move);
+        return iterator(_x0, _y0, _dx, _dy, _sx, _sy);
     }
 
     /// @brief Create an iterator that is positioned one step past the
     /// ending coordinates.
     constexpr iterator end() const {
-        return iterator(_p1, _delta, _move);
+        return iterator(_x1, _y1, _dx, _dy, _sx, _sy);
     }
 };
 
@@ -340,29 +256,30 @@ class thin_line_view : public std::ranges::view_interface<thin_line_view> {
 
 class thick_line_view
     : public std::ranges::view_interface<thick_line_view> {
-    point _p0;        ///< The starting point.
-    point _p1;        ///< The finishing point.
+    int _x0, _y0;     ///< The starting point.
+    int _x1, _y1;     ///< The finishing point.
     unsigned int _r2; ///< The radius squared.
-    point _delta;     ///< The absolute difference between the endpoints.
-    point _move;      ///< The direction of movement along each axis.
+
+    int _dx = std::abs(_x1 - _x0);
+    int _dy = std::abs(_y1 - _y0);
+    int _sx = _x1 > _x0 ? +1 : -1;
+    int _sy = _y1 > _y0 ? +1 : -1;
 
   public:
     /// @brief Construct a thick line between two endpoints with a
     /// given thickness.
-    thick_line_view(
-        auto &&p0,    ///< the starting point
-        auto &&p1,    ///< the ending point
-        auto &&radius ///< the half-width of the thick line
-    )
-        : _p0(std::forward<decltype(p0)>(p0))
-        , _p1(std::forward<decltype(p1)>(p1))
-        , _r2(radius * radius)
-        , _delta(abs(_p1 - _p0))
-        , _move(sgn(_p1 - _p0)) {}
+    thick_line_view(int x0, int y0, int x1, int y1, unsigned short radius)
+        : _x0(x0)
+        , _y0(y0)
+        , _x1(x1)
+        , _y1(y1)
+        , _r2(radius * radius) {}
 
     /// @brief An iterator that manages multiple thin iterators in tandem.
 
     class iterator {
+        using point = std::pair<int, int>;
+
         std::vector<thin_line_view::iterator> _iters;
         std::vector<point> _value;
 
@@ -383,7 +300,8 @@ class thick_line_view
         )
             : _iters(std::forward<Range>(iters)) {
             for (auto &&iter : _iters) {
-                _value.push_back(*iter);
+                auto &&[x, y] = *iter;
+                _value.emplace_back(x, y);
             }
         }
 
@@ -402,7 +320,8 @@ class thick_line_view
             _value.clear();
 
             for (auto &&iter : _iters) {
-                _value.push_back(*(++iter));
+                auto [x, y] = *(++iter);
+                _value.emplace_back(x, y);
             }
 
             return *this;
@@ -416,45 +335,54 @@ class thick_line_view
         }
 
         /// @brief Equality operator.
-        bool operator==(const iterator &rhs) const noexcept = default;
+        bool operator==(const iterator &rhs) const noexcept {
+            return std::ranges::equal(
+                _value, rhs._value, [](auto &&a, auto &&b) {
+                    auto &&[ax, ay] = a;
+                    auto &&[bx, by] = b;
+                    return ax == bx && ay == by;
+                }
+            );
+        }
 
         /// @brief Factory method to produce an iterator.
         static iterator create(
-            point const &current, ///< the current position of the iterator
-            point const &delta,   ///< the absolute change of position
-            point const &move,    ///< the direction of movement
-            unsigned int r2       ///< the square of the radius
+            int x,          ///< the current x position of the iterator
+            int y,          ///< the current y position of the iterator
+            int dx,         ///< the absolute change in z
+            int dy,         ///< the absolute change in y
+            int sx,         ///< the direction of horizontal movement
+            int sy,         ///< the direction of vertical movement
+            unsigned int r2 ///< the square of the radius
         );
     };
 
     /// @brief Create an iterator that is positioned at the starting
     /// coordinates.
     iterator begin() const {
-        return iterator::create(_p0, _delta, _move, _r2);
+        return iterator::create(_x0, _y0, _dx, _dy, _sx, _sy, _r2);
     }
 
     /// @brief Create an iterator that is positioned at the
     /// ending coordinates.
     iterator end() const {
-        return iterator::create(_p1, _delta, _move, _r2);
+        return iterator::create(_x1, _y1, _dx, _dy, _sx, _sy, _r2);
     }
 };
 
 inline thick_line_view::iterator thick_line_view::iterator::create(
-    point const &current, point const &delta, point const &step,
-    unsigned int r2
+    int cur_x, int cur_y, int dx, int dy, int sx, int sy, unsigned int r2
 ) {
-    auto &&[dx, dy] = delta;
-    auto &&[sx, sy] = step;
-
-    // This gets complicated...
-    //
     // Determine the axis along which the parallel lines have the
-    // greatest change. Make some pointers to member fields for later
-    // use.
+    // greatest change.  This is the major direction: create a
+    // function pointer to access the corresponding component of any
+    // point.
 
-    int point::*const major = delta.x >= delta.y ? &point::x : &point::y;
-    int point::*const minor = delta.x >= delta.y ? &point::y : &point::x;
+    // clang-format off
+    int &(*const major)(int &, int &) noexcept = dx >= dy ?
+        [](int &x, int &) noexcept -> int & { return x; } :
+        [](int &, int &y) noexcept -> int & { return y; };
+    // clang-format on
 
     // Generate a perpendicular to the baseline that passes
     // through the origin.  These points will be the offsets from the
@@ -463,58 +391,65 @@ inline thick_line_view::iterator thick_line_view::iterator::create(
     // Find a point that lies on the perpendicular and is sufficiently
     // far away from the origin.
 
-    point perp_step = {-sy, +sx};
+    int px = -sy, py = +sx;
 
     // The orientation of the perpendicular is important.  The
     // movement component in the major direction for both the parallel
     // and perpendicular lines must be the same.  If it is not, rotate
     // the perpendicular an additional 180°.
 
-    if (perp_step.*major != step.*major) {
-        perp_step *= -1;
+    if (major(px, py) != major(sx, sy)) {
+        px = +sy, py = -sx;
     }
 
-    point perp_endpt = {
-        perp_step.x * dy,
-        perp_step.y * dx,
-    };
+    int perp_x = px * dy, perp_y = py * dx;
 
     // Ensure that the starting point is sufficiently far away.  (It
     // should alredy be except in pathological cases.)
 
-    while (perp_endpt.length_squared() < r2) {
-        perp_endpt *= 2;
+    constexpr static auto length_squared = [](int x, int y) noexcept {
+        return x * x + y * y;
+    };
+
+    while (length_squared(perp_x, perp_y) < r2) {
+        perp_x *= 2, perp_y *= 2;
     }
 
     // A predicate that determines if the point is within the radius
     // from the origin.
 
     const auto within_radius = [&r2](auto &&pt) {
-        return pt.length_squared() <= r2;
+        auto &&[x, y] = pt;
+        return length_squared(x, y) <= r2;
     };
 
     // Create a view over the perpendicular that only contains the
     // points within the radius.
 
     auto perpendicular =
-        thin_line_view(-perp_endpt, perp_endpt) |
+        thin_line_view(-perp_x, -perp_y, perp_x, perp_y) |
         std::views::drop_while(std::not_fn(within_radius)) |
         std::views::take_while(within_radius);
 
     auto begin = perpendicular.begin();
     auto end = perpendicular.end();
-    auto next = *begin;
+
+    int next_x = begin->first;
+    int next_y = begin->second;
 
     std::vector<thin_line_view::iterator> iterators;
-    error_accumulator parallel_error(delta);
+    error_accumulator parallel_error(dx, dy);
 
     while (++begin != end) {
-        auto offset = std::exchange(next, *begin);
+        auto off_x = std::exchange(next_x, begin->first);
+        auto off_y = std::exchange(next_y, begin->second);
 
-        iterators.emplace_back(current + offset, parallel_error, step);
+        iterators.emplace_back(
+            cur_x + off_x, cur_y + off_y, sx, sy, parallel_error
+        );
 
-        auto const x_will_change = (next.x - offset.x) != 0;
-        auto const y_will_change = (next.y - offset.y) != 0;
+        auto const x_will_change = (next_x - off_x) != 0;
+        auto const y_will_change = (next_y - off_y) != 0;
 
         // If the perpendicular is about to make a diagonal move, then
         // update the parallel error accumulator.
@@ -529,16 +464,17 @@ inline thick_line_view::iterator thick_line_view::iterator::create(
             // diagonal move into two square moves.
 
             if (move_x && move_y) {
-                offset.*major += perp_step.*major;
+                major(off_x, off_y) += major(px, py);
                 iterators.emplace_back(
-                    current + offset, parallel_error, step
+                    cur_x + off_x, cur_y + off_y, sx, sy, parallel_error
                 );
-                offset.*minor += perp_step.*minor;
             }
         }
     }
 
-    iterators.emplace_back(current + next, parallel_error, step);
+    iterators.emplace_back(
+        cur_x + next_x, cur_y + next_y, sx, sy, parallel_error
+    );
 
     return iterator{std::move(iterators)};
 }
@@ -549,23 +485,24 @@ namespace views {
 
 struct __line_fn {
     constexpr auto operator()(auto &&p0, auto &&p1) const {
-        return ranges::thin_line_view(
-            std::forward<decltype(p0)>(p0), std::forward<decltype(p1)>(p1)
-        );
+        auto &&[x0, y0] = p0;
+        auto &&[x1, y1] = p1;
+
+        return ranges::thin_line_view(x0, y0, x1, y1);
     }
 
     constexpr auto operator()(auto &&p0, auto &&p1, auto &&radius) const {
-        return ranges::thick_line_view(
-            std::forward<decltype(p0)>(p0), std::forward<decltype(p1)>(p1),
-            radius
-        );
+        auto &&[x0, y0] = std::forward<decltype(p0)>(p0);
+        auto &&[x1, y1] = std::forward<decltype(p1)>(p1);
+
+        return ranges::thick_line_view(x0, y0, x1, y1, radius);
     }
 };
 
 /// @brief Range adaptor closure object.
 ///
-/// Constructs a thin or thick line depending if the optional third
-/// parameter is supplied.
+/// Constructs a thin or thick line depending if the radius parameter
+/// is supplied.
 
 inline constexpr auto line = __line_fn{};
 
