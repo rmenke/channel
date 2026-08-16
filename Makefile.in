@@ -366,6 +366,7 @@ EXTRA_DIST = git-semver
 AM_CPPFLAGS = $(am__append_1)
 AM_CXXFLAGS = $(am__append_2)
 include_HEADERS = include/channel.hpp
+@CODE_COVERAGE_ENABLED_TRUE@CODE_COVERAGE_IGNORE_PATTERN = "*/usr/include/*" "$(abs_srcdir)/test/*"
 all: all-recursive
 
 .SUFFIXES:

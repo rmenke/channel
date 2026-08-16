@@ -109,6 +109,7 @@ class error_accumulator {
 };
 
 /// @brief Range factories.
+
 namespace ranges {
 
 /// @brief The classic Bresenham algorithm as a range factory.
@@ -120,6 +121,8 @@ class thin_line_view : public std::ranges::view_interface<thin_line_view> {
     int _x0, _y0; ///< The starting point.
     int _x1, _y1; ///< The finishing point.
 
+    bool _closed;               ///< Include finishing point in range?
+
     int _dx = std::abs(_x1 - _x0); ///< Absolute change in x.
     int _dy = std::abs(_y1 - _y0); ///< Absolute change in y.
     int _sx = _x1 > _x0 ? +1 : -1; ///< Direction of x movement.
@@ -128,13 +131,22 @@ class thin_line_view : public std::ranges::view_interface<thin_line_view> {
   public:
     /// @brief Construct a thin line between two endpoints.
     ///
-    /// The result will contain only the first endpoint.
+    /// By default, the finishing point will not be included in the
+    /// generated range.  If it should be, then the @p closed
+    /// parameter should be set to @c true.
 
-    constexpr thin_line_view(int x0, int y0, int x1, int y1) noexcept
+    constexpr thin_line_view(
+        int x0,             ///< X coordinate of starting point.
+        int y0,             ///< Y coordinate of starting point.
+        int x1,             ///< X coordinate of finishing point.
+        int y1,             ///< Y coordinate of finishing point.
+        bool closed = false ///< Include the finishing point in range?
+    ) noexcept
         : _x0(x0)
         , _y0(y0)
         , _x1(x1)
-        , _y1(y1) {}
+        , _y1(y1)
+        , _closed(closed) {}
 
     /// @brief An iterator that generates the integral points nearest to the
     /// ideal ray.
@@ -216,22 +228,27 @@ class thin_line_view : public std::ranges::view_interface<thin_line_view> {
 
         /// @brief Equality operator.
         constexpr bool operator==(iterator const &rhs) const noexcept {
-            auto &&[x, y] = _current;
-            auto &&[rx, ry] = rhs._current;
-            return x == rx && y == ry;
+            return _current == rhs._current;
         }
     };
 
     /// @brief Create an iterator that is positioned at the starting
     /// coordinates.
+
     constexpr iterator begin() const {
         return iterator(_x0, _y0, _dx, _dy, _sx, _sy);
     }
 
     /// @brief Create an iterator that is positioned one step past the
-    /// ending coordinates.
+    /// finishing coordinates.
+    ///
+    /// If the @p _closed flag is true, this iterator will actually be
+    /// one step beyond the finishing coordinates.
+
     constexpr iterator end() const {
-        return iterator(_x1, _y1, _dx, _dy, _sx, _sy);
+        iterator iter(_x1, _y1, _dx, _dy, _sx, _sy);
+        if (_closed) ++iter;
+        return iter;
     }
 };
 
@@ -260,6 +277,8 @@ class thick_line_view
     int _x1, _y1;     ///< The finishing point.
     unsigned int _r2; ///< The radius squared.
 
+    bool _closed; ///< Include the finishing point in the range?
+
     int _dx = std::abs(_x1 - _x0);
     int _dy = std::abs(_y1 - _y0);
     int _sx = _x1 > _x0 ? +1 : -1;
@@ -268,12 +287,17 @@ class thick_line_view
   public:
     /// @brief Construct a thick line between two endpoints with a
     /// given thickness.
-    thick_line_view(int x0, int y0, int x1, int y1, unsigned short radius)
+
+    thick_line_view(
+        int x0, int y0, int x1, int y1, unsigned short radius,
+        bool closed = false
+    )
         : _x0(x0)
         , _y0(y0)
         , _x1(x1)
         , _y1(y1)
-        , _r2(radius * radius) {}
+        , _r2(radius * radius)
+        , _closed(closed) {}
 
     /// @brief An iterator that manages multiple thin iterators in tandem.
 
@@ -359,14 +383,18 @@ class thick_line_view
 
     /// @brief Create an iterator that is positioned at the starting
     /// coordinates.
+
     iterator begin() const {
         return iterator::create(_x0, _y0, _dx, _dy, _sx, _sy, _r2);
     }
 
-    /// @brief Create an iterator that is positioned at the
-    /// ending coordinates.
+    /// @brief Create an iterator that is positioned at the finishing
+    /// coordinates.
+
     iterator end() const {
-        return iterator::create(_x1, _y1, _dx, _dy, _sx, _sy, _r2);
+        iterator iter = iterator::create(_x1, _y1, _dx, _dy, _sx, _sy, _r2);
+        if (_closed) ++iter;
+        return iter;
     }
 };
 
@@ -407,7 +435,8 @@ inline thick_line_view::iterator thick_line_view::iterator::create(
     // Ensure that the starting point is sufficiently far away.  (It
     // should alredy be except in pathological cases.)
 
-    constexpr static auto length_squared = [](int x, int y) noexcept {
+    constexpr static auto length_squared =
+        [](int x, int y) noexcept -> std::size_t {
         return x * x + y * y;
     };
 

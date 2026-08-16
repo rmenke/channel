@@ -16,6 +16,8 @@ include_HEADERS = include/channel.hpp
 
 if CODE_COVERAGE_ENABLED
 
+CODE_COVERAGE_IGNORE_PATTERN = "*/usr/include/*" "$(abs_srcdir)/test/*"
+
 AM_CPPFLAGS += $(CODE_COVERAGE_CPPFLAGS)
 AM_CXXFLAGS += $(CODE_COVERAGE_CXXFLAGS)
 

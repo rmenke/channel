@@ -5,11 +5,13 @@
 
 #include <math.h>
 
+#include <algorithm>
 #include <filesystem>
 #include <iterator>
 #include <numbers>
 #include <random>
 #include <ranges>
+#include <set>
 #include <stdexcept>
 
 using namespace tap;
@@ -28,9 +30,23 @@ void sprint_tuple(ostream &os, auto const &t, index_sequence<Ix, Ir...>) {
 template <typename T>
     requires(std::tuple_size<T>::value >= 0)
 void sprint_one(ostream &os, T const &t) {
-    os << '[';
+    tap::sprint(os, "(");
     sprint_tuple(os, t, std::make_index_sequence<std::tuple_size_v<T>>{});
-    os << ']';
+    tap::sprint(os, ")");
+}
+
+template <typename T>
+void sprint_one(ostream &os, vector<T> const &v) {
+    auto b = v.begin(), e = v.end();
+
+    tap::sprint(os, "[");
+
+    if (b != e) {
+        tap::sprint(os, *b);
+        while (++b!=e) tap::sprint(os, ", ", *b);
+    }
+
+    tap::sprint(os, "]");
 }
 
 } // namespace std
@@ -157,8 +173,40 @@ void test_degenerate() {
 
     ok(b == e, "begin() == end()");
 
-    eq(std::tuple{e->first, e->second}, std::tuple{25, 73}, "iterator valid");
+    eq(std::tuple{e->first, e->second}, std::tuple{25, 73},
+       "iterator valid");
     ok(e == ++b, "increment does not change iterator");
+}
+
+void test_closed() {
+    auto v = channel::ranges::thin_line_view(10, 10, 20, 30, false);
+
+    std::pair p0{10, 10};
+    std::pair p1{20, 30};
+
+    std::set<std::pair<int, int>> open;
+
+    std::ranges::copy(v, std::inserter(open, open.begin()));
+
+    ok(open.contains(p0), "starting point");
+    ok(!open.contains(p1), "no finishing point");
+
+    v = channel::ranges::thin_line_view(10, 10, 20, 30, true);
+
+    std::set<std::pair<int, int>> closed;
+
+    std::ranges::copy(v, std::inserter(closed, closed.begin()));
+
+    ok(closed.contains(p0), "starting point");
+    ok(closed.contains(p1), "finishing point");
+
+    std::vector<std::pair<int,int>> difference;
+
+    std::ranges::set_difference(
+        closed, open, std::back_inserter(difference)
+    );
+
+    eq(std::vector{p1}, difference, "only difference");
 }
 
 int main(int argc, char **argv) {
@@ -175,6 +223,7 @@ int main(int argc, char **argv) {
         test_random(progname, urbg);
         test_radial(progname);
         test_degenerate();
+        test_closed();
     }
     catch (...) {
         bail_out(std::current_exception());
